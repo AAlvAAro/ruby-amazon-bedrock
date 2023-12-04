@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/amazon.titan-text-express-v1/invoke
+    body:
+      encoding: UTF-8
+      string: '{"inputText":"Hello World","textGenerationConfig":{"maxTokenCount":4096,"stopSequences":[],"temperature":0,"topP":1}}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '117'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 04:11:40 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '181'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 8936be38-3d1d-420c-842f-1001e6b90b39
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '1037'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '20'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '4'
+    body:
+      encoding: UTF-8
+      string: '{"inputTextTokenCount":4,"results":[{"tokenCount":20,"outputText":"\nHello!
+        I am a computer program designed to assist you. How can I help you today?","completionReason":"FINISH"}]}'
+  recorded_at: Mon, 04 Dec 2023 04:11:40 GMT
+recorded_with: VCR 6.2.0

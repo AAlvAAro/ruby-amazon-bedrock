@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/cohere.command-light-text-v14/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"Hello World:","max_tokens":100,"temperature":0.8}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '60'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 16:34:41 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '598'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - '09e944fc-71ea-453c-bac4-59aee0bbc7b3'
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '1677'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '95'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '3'
+    body:
+      encoding: UTF-8
+      string: '{"generations":[{"finish_reason":"COMPLETE","id":"17742ba3-14ac-4790-a105-ddb34f76b544","text":"
+        Hi there! It''s great that you''re starting off with a simple Hello, World!
+        example. This is a fundamental step in learning about programming and I''m
+        sure you''ll be taking many more steps from here.\n\nWhat would you like to
+        do next with the Hello World program? Can you provide more details about what
+        you''d like to achieve or explore? I''ll be happy to assist you in any way
+        I can to help you progress in your programming journey!"}],"id":"09e944fc-71ea-453c-bac4-59aee0bbc7b3","prompt":"Hello
+        World:"}'
+  recorded_at: Mon, 04 Dec 2023 16:34:41 GMT
+recorded_with: VCR 6.2.0

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/ruby/amazon/bedrock/version"
+require_relative "lib/bedrock/version"
 
 Gem::Specification.new do |spec|
   spec.name = "ruby-amazon-bedrock"

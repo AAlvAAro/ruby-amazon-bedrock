@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/anthropic.claude-v1/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"\n\nHuman: Hello World\n\nAssistant:","max_tokens_to_sample":300,"temperature":0.5,"top_k":250,"top_p":1,"stop_sequences":["\\n\\nHuman"],"anthropic_version":"bedrock-2023-05-31"}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '190'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 16:25:50 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '93'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 585daab3-fb45-4a59-a116-1c8c02ea5908
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '738'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '11'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '11'
+    body:
+      encoding: UTF-8
+      string: '{"completion":" Hello! My name is Claude.","stop_reason":"stop_sequence","stop":"\n\nHuman:"}'
+  recorded_at: Mon, 04 Dec 2023 16:25:50 GMT
+recorded_with: VCR 6.2.0

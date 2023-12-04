@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/amazon.titan-text-lite-v1/invoke
+    body:
+      encoding: UTF-8
+      string: '{"inputText":"input_text","textGenerationConfig":{"maxTokenCount":4096,"stopSequences":[],"temperature":0,"topP":1}}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '116'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 03:58:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '173'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 8e3d6158-9456-432b-b6cd-9f9a1202728d
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '1161'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '23'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '3'
+    body:
+      encoding: UTF-8
+      string: '{"inputTextTokenCount":3,"results":[{"tokenCount":23,"outputText":"
+        = input(\"Enter your name: \")\nprint(\"Hello, \" + input_text + \"!\")\n","completionReason":"FINISH"}]}'
+  recorded_at: Mon, 04 Dec 2023 03:58:44 GMT
+recorded_with: VCR 6.2.0

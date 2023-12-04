@@ -10,7 +10,7 @@ module RubyAmazonBedrock
       # @see https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=ai21.j2-mid-v1
       # for more information about the AI21 Labs model.
       class J2MidV1 < Base
-        # Returns the model ID for the AI21 Labs Jurassic-2 Ultra model.
+        # Returns the model ID for the AI21 Labs Jurassic-2 Mid model.
         #
         # @return [String] 'ai21labs.j2-mid-v1'
         def model_id

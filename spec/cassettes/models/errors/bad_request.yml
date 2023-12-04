@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/anthropic.claude-v1/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"Hello World","max_tokens_to_sample":300,"temperature":0.5,"top_k":250,"top_p":1,"stop_sequences":["\\n\\nHuman"],"anthropic_version":"bedrock-2023-05-31"}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '165'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 16:22:54 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '118'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 278c71dd-6255-4fed-962c-c27107789b57
+      X-Amzn-Errortype:
+      - ValidationException:http://internal.amazon.com/coral/com.amazon.bedrock/
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid prompt: prompt must start with \"\n\nHuman:\" turn,
+        prompt must end with \"\n\nAssistant:\" turn"}'
+  recorded_at: Mon, 04 Dec 2023 16:22:54 GMT
+recorded_with: VCR 6.2.0

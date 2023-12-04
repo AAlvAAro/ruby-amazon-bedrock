@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/meta.llama2-70b-chat-v1/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"Hello World","max_gen_len":512,"temperature":0.2,"top_p":0.9}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '72'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 16:39:45 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1267'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 3f72d576-207c-489d-93f5-626e5b8860b6
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '13650'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '298'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '3'
+    body:
+      encoding: UTF-8
+      string: '{"generation":"!\n\nThis is my first post on my new blog. I''m excited
+        to start sharing my thoughts and experiences with you all. I''m not sure what
+        the future holds for this blog, but I''m looking forward to seeing where it
+        takes me.\n\nI''ve been thinking about starting a blog for a while now, and
+        I''m glad I finally took the plunge. I''m hoping to use this space to share
+        my thoughts on a variety of topics, including technology, programming, and
+        life in general.\n\nI''m a software developer by trade, and I''m passionate
+        about staying up-to-date with the latest technologies. I''m always looking
+        for new ways to improve my skills and learn new things, and I hope to share
+        some of that knowledge with you here.\n\nIn addition to technology, I''m also
+        interested in photography, music, and travel. I''m hoping to share some of
+        my photos and experiences from my travels with you, as well as some of the
+        music I''ve been listening to.\n\nI''m not sure how often I''ll be posting,
+        but I''m hoping to aim for at least once a week. I''m looking forward to hearing
+        your feedback and thoughts, so please don''t hesitate to leave a comment or
+        reach out to me.\n\nThanks for reading, and I hope you enjoy my blog!","prompt_token_count":3,"generation_token_count":298,"stop_reason":"stop"}'
+  recorded_at: Mon, 04 Dec 2023 16:39:45 GMT
+recorded_with: VCR 6.2.0

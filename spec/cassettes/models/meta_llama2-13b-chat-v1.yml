@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/meta.llama2-13b-chat-v1/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"Hello World","max_gen_len":512,"temperature":0.2,"top_p":0.9}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
+        lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      Content-Length:
+      - '72'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 Dec 2023 16:39:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '868'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 80b8d267-d34f-4a87-8a7f-3d73e196a716
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '4973'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '192'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '3'
+    body:
+      encoding: UTF-8
+      string: '{"generation":"!\n================\n\nThis is my first blog post! I''m
+        so excited to finally have a place where I can share my thoughts and experiences
+        with the world. I''ve been wanting to start a blog for a while now, and I''m
+        so glad that I finally took the plunge.\n\nI''m not sure what kind of content
+        I''ll be posting yet, but I know that I''ll be writing about a variety of
+        topics that interest me, such as technology, health and wellness, and personal
+        development. I''m also hoping to share some of my own creative writing and
+        artwork, as well as some of the amazing things that I''ve learned from my
+        travels and experiences.\n\nI''m looking forward to connecting with all of
+        you and hearing your thoughts and feedback. Thank you for joining me on this
+        journey!\n\nUntil next time,\n[Your Name]","prompt_token_count":3,"generation_token_count":192,"stop_reason":"stop"}'
+  recorded_at: Mon, 04 Dec 2023 16:39:13 GMT
+recorded_with: VCR 6.2.0
