@@ -18,8 +18,8 @@ module RubyAmazonBedrock
         #   - :content_type [String] Specifies the content type of the payload, typically set to 'application/json'.
         #   - :accept [String] Indicates the MIME type that the response should conform to.
         #   - :body [String] A JSON string including:
-        #     - :text_prompts [Array<Hash>] An array of hashes, each containing a 'text' key with a string value representing
-        # 			a prompt.
+        #     - :text_prompts [Array<Hash>] An array of hashes, each containing a 'text' key with a string value
+        #       representing a prompt.
         #     - :cfg_scale [Integer] A parameter influencing the level of control versus freedom in content generation.
         #     - :seed [Integer] Seed value for deterministic outputs, enabling reproducibility of results.
         #     - :steps [Integer] Specifies the number of steps the model should take in generating the output.

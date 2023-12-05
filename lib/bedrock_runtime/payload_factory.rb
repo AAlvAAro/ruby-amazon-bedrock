@@ -45,7 +45,7 @@ module RubyAmazonBedrock
 
       raise UnknownModelError, "Unknown modelId: #{@model_id}" unless builder_class
 
-      builder_class.new(@input, @options).build
+      builder_class.new(@input, @options)
     end
 
     # Defines a mapping from model identifiers to their respective builder classes.

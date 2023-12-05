@@ -5,7 +5,10 @@ require 'bedrock_runtime/client'
 require 'bedrock_runtime/payload_factory'
 
 require 'dotenv/load'
+require 'simplecov'
 require 'vcr'
+
+SimpleCov.start
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

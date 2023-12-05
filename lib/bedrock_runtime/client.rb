@@ -31,8 +31,8 @@ module RubyAmazonBedrock
     # 		id: 'model_id', input: 'This is what you want to generate', options: { option_key: 'option_value' }
     # 	)
     def invoke_model(id:, input:, options: {})
-      payload = PayloadFactory.new(id, input, options).create
-      @client.invoke_model(payload)
+      builder_class = PayloadFactory.new(id, input, options).create
+      @client.invoke_model(builder_class.build)
     end
   end
 end
