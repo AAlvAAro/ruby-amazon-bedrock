@@ -35,6 +35,10 @@ module RubyAmazonBedrock
             }.to_json
           }
         end
+
+        def model_id
+          # noop
+        end
       end
     end
   end

@@ -12,6 +12,8 @@ module RubyAmazonBedrock
         def build
           {
             model_id: 'amazon.titan-text-lite-v1',
+            content_type: 'application/json',
+            accept: '*/*',
             body: {
               inputText: @input,
               textGenerationConfig: {
