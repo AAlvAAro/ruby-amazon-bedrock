@@ -18,9 +18,6 @@ require_relative 'payload_builders/stability_ai/stable_diffusion_xl_v0'
 require_relative 'payload_builders/stability_ai/stable_diffusion_xl_v1'
 
 module RubyAmazonBedrock
-  # Raised when an unknown model identifier is provided to PayloadFactory.
-  class UnknownModelError < StandardError; end
-
   # The PayloadFactory class is responsible for creating instances of payload builders
   # based on the provided model identifier.
   #

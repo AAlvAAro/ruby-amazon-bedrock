@@ -5,45 +5,50 @@ http_interactions:
     uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/amazon.titan-text-lite-v1/invoke
     body:
       encoding: UTF-8
-      string: '{"inputText":"input_text","textGenerationConfig":{"maxTokenCount":4096,"stopSequences":[],"temperature":0,"topP":1}}'
+      string: '{"inputText":"Give me a short list of steps for creating a Ruby gem","textGenerationConfig":{"maxTokenCount":4096,"stopSequences":[],"temperature":0,"topP":1}}'
     headers:
       Accept-Encoding:
       - ''
       Content-Type:
       - application/json
+      Accept:
+      - "*/*"
       User-Agent:
       - aws-sdk-ruby3/3.189.0 ua/2.0 api/bedrock_runtime#1.4.0 os/macos#22 md/arm64
         lang/ruby#3.2.2 md/3.2.2 cfg/retry-mode#legacy
       Host:
       - bedrock-runtime.us-east-1.amazonaws.com
       Content-Length:
-      - '116'
-      Accept:
-      - "*/*"
+      - '159'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 04 Dec 2023 03:58:44 GMT
+      - Wed, 06 Dec 2023 05:48:33 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '173'
+      - '540'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 8e3d6158-9456-432b-b6cd-9f9a1202728d
+      - 0b0079d1-8c05-407a-a46b-bb871d9e87b8
       X-Amzn-Bedrock-Invocation-Latency:
-      - '1161'
+      - '4366'
       X-Amzn-Bedrock-Output-Token-Count:
-      - '23'
+      - '116'
       X-Amzn-Bedrock-Input-Token-Count:
-      - '3'
+      - '12'
     body:
       encoding: UTF-8
-      string: '{"inputTextTokenCount":3,"results":[{"tokenCount":23,"outputText":"
-        = input(\"Enter your name: \")\nprint(\"Hello, \" + input_text + \"!\")\n","completionReason":"FINISH"}]}'
-  recorded_at: Mon, 04 Dec 2023 03:58:44 GMT
+      string: '{"inputTextTokenCount":12,"results":[{"tokenCount":116,"outputText":"\nHere
+        are the steps for creating a Ruby gem:\n1. Create a directory for your gem.\n2.
+        Create a file named \"Gemfile\" in the directory.\n3. Add the path to the
+        directory containing your gem''s code in the \"Gemfile\".\n4. Run the command
+        \"bundle install\" in the directory.\n5. Add the \"gem\" command to your \".bashrc\"
+        file if you want to use it from the command line.\n6. Run the command \"gem
+        install [gem-name]\" to install the gem.","completionReason":"FINISH"}]}'
+  recorded_at: Wed, 06 Dec 2023 05:48:33 GMT
 recorded_with: VCR 6.2.0

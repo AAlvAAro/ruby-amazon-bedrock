@@ -5,7 +5,7 @@ http_interactions:
     uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/amazon.titan-text-express-v1/invoke
     body:
       encoding: UTF-8
-      string: '{"inputText":"Hello World","textGenerationConfig":{"maxTokenCount":4096,"stopSequences":[],"temperature":0,"topP":1}}'
+      string: '{"inputText":"Give me a short list of steps for creating a Ruby gem","textGenerationConfig":{"maxTokenCount":4096,"stopSequences":[],"temperature":0,"topP":1}}'
     headers:
       Accept-Encoding:
       - ''
@@ -19,31 +19,41 @@ http_interactions:
       Host:
       - bedrock-runtime.us-east-1.amazonaws.com
       Content-Length:
-      - '117'
+      - '159'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 04 Dec 2023 04:11:40 GMT
+      - Wed, 06 Dec 2023 05:48:40 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '181'
+      - '936'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - 8936be38-3d1d-420c-842f-1001e6b90b39
+      - bfa4ea73-8745-4e6f-857c-cb568c567f0c
       X-Amzn-Bedrock-Invocation-Latency:
-      - '1037'
+      - '7087'
       X-Amzn-Bedrock-Output-Token-Count:
-      - '20'
+      - '234'
       X-Amzn-Bedrock-Input-Token-Count:
-      - '4'
+      - '12'
     body:
       encoding: UTF-8
-      string: '{"inputTextTokenCount":4,"results":[{"tokenCount":20,"outputText":"\nHello!
-        I am a computer program designed to assist you. How can I help you today?","completionReason":"FINISH"}]}'
-  recorded_at: Mon, 04 Dec 2023 04:11:40 GMT
+      string: '{"inputTextTokenCount":12,"results":[{"tokenCount":234,"outputText":"\nHere
+        is a short list of steps for creating a Ruby gem:\n1. Create a new directory
+        for your gem.\n2. Initialize a new Ruby gem using the ''gem'' command.\n3.
+        Add a ''Gemfile'' to your gem directory.\n4. Write the code for your gem in
+        the ''lib/your_gem_name'' directory.\n5. Add a ''Rakefile'' to your gem directory.\n6.
+        Use the ''gem build'' command to build your gem.\n7. Use the ''gem install''
+        command to install your gem on your system.\n8. Publish your gem to the RubyGems
+        repository using the ''gem push'' command.\n9. Use the ''gem'' command to
+        install your gem from the RubyGems repository.\n10. Test your gem using the
+        ''rake'' command.\n11. Document your gem using the ''rdoc'' command.\n12.
+        Release a new version of your gem using the ''gem release'' command.\n13.
+        Update your gem with new features and bug fixes using the ''gem update'' command.","completionReason":"FINISH"}]}'
+  recorded_at: Wed, 06 Dec 2023 05:48:40 GMT
 recorded_with: VCR 6.2.0

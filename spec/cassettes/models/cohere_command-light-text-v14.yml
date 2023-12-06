@@ -5,7 +5,7 @@ http_interactions:
     uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/cohere.command-light-text-v14/invoke
     body:
       encoding: UTF-8
-      string: '{"prompt":"Hello World:","max_tokens":100,"temperature":0.8}'
+      string: '{"prompt":"Give me a short list of steps for creating a Ruby gem:","max_tokens":100,"temperature":0.8}'
     headers:
       Accept-Encoding:
       - ''
@@ -19,37 +19,36 @@ http_interactions:
       Host:
       - bedrock-runtime.us-east-1.amazonaws.com
       Content-Length:
-      - '60'
+      - '102'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 04 Dec 2023 16:34:41 GMT
+      - Wed, 06 Dec 2023 05:49:08 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '598'
+      - '610'
       Connection:
       - keep-alive
       X-Amzn-Requestid:
-      - '09e944fc-71ea-453c-bac4-59aee0bbc7b3'
+      - 6cb5c51a-cbef-4aa0-89b9-1a82301b9fae
       X-Amzn-Bedrock-Invocation-Latency:
-      - '1677'
+      - '1851'
       X-Amzn-Bedrock-Output-Token-Count:
-      - '95'
+      - '100'
       X-Amzn-Bedrock-Input-Token-Count:
-      - '3'
+      - '13'
     body:
       encoding: UTF-8
-      string: '{"generations":[{"finish_reason":"COMPLETE","id":"17742ba3-14ac-4790-a105-ddb34f76b544","text":"
-        Hi there! It''s great that you''re starting off with a simple Hello, World!
-        example. This is a fundamental step in learning about programming and I''m
-        sure you''ll be taking many more steps from here.\n\nWhat would you like to
-        do next with the Hello World program? Can you provide more details about what
-        you''d like to achieve or explore? I''ll be happy to assist you in any way
-        I can to help you progress in your programming journey!"}],"id":"09e944fc-71ea-453c-bac4-59aee0bbc7b3","prompt":"Hello
-        World:"}'
-  recorded_at: Mon, 04 Dec 2023 16:34:41 GMT
+      string: '{"generations":[{"finish_reason":"MAX_TOKENS","id":"1f09f5b8-309d-4f63-9611-e58206b07ed7","text":"
+        Here is a step-by-step guide to creating a Ruby gem:\n1. **Set up your development
+        environment**:  \n   - Ensure you have Ruby (version 2.5 or higher) installed
+        on your machine. You can download it from [the official website](https://www.ruby-lang.org/).\n   -
+        Install a code editor or an IDE, such as [Visual Studio Code](https://code.visualstudio.com/).\n   -
+        Install a `git` repository manager,"}],"id":"6cb5c51a-cbef-4aa0-89b9-1a82301b9fae","prompt":"Give
+        me a short list of steps for creating a Ruby gem:"}'
+  recorded_at: Wed, 06 Dec 2023 05:49:07 GMT
 recorded_with: VCR 6.2.0

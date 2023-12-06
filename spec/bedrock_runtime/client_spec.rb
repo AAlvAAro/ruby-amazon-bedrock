@@ -26,10 +26,10 @@ RSpec.describe RubyAmazonBedrock::Client do
     ]
 
     models.each do |model|
-      it "invokes an #{model} with the given payload" do
+      it "invokes #{model} model with the given payload" do
         VCR.use_cassette("models/#{model}") do
-          response = client.invoke_model(id: model, input: 'Hello World', options: {})
-          expect(response).to eq(response)
+          response = client.invoke_model(id: model, input: 'Give me a short list of steps for creating a Ruby gem', options: {})
+          expect(response).to be_a(Hash)
         end
       end
     end
