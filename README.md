@@ -1,35 +1,125 @@
-# Ruby::Amazon::Bedrock
+# Ruby OpenAI
 
-TODO: Delete this and the text below, and describe your gem
+[![Gem Version](https://img.shields.io/gem/v/ruby-openai.svg)](https://rubygems.org/gems/ruby-amazon-bedrock)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AAlvAAro/ruby-amazon-bedrock/blob/main/LICENSE.txt)
+[![CircleCI Build Status](https://circleci.com/gh/AAlvAAro/ruby-amazon-bedrock.svg?style=shield)](https://circleci.com/gh/AAlvAAro/ruby-amazon-bedrock)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby/amazon/bedrock`. To experiment with that code, run `bin/console` for an interactive prompt.
+Seamless Integration with Amazon Bedrock API for AI-Powered Text and Image Generation in Ruby 🤖 + 💎. [AWS Bedrock API](https://aws.amazon.com/es/bedrock/).
 
-## Installation
+Stream text with GPT-4, transcribe and translate audio with Whisper, or create images with DALL·E...
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+### Bundler
 
-Install the gem and add to the application's Gemfile by executing:
+Add this line to your application's Gemfile:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+gem "ruby-amazon-bedrock"
+```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+And then execute:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```bash
+$ bundle install
+```
+
+### Gem install
+
+Or install with:
+
+```bash
+$ gem install ruby-amazon-bedrock
+```
+
+and require with:
+
+```ruby
+require "amazon-bedrock"
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+<!-- Get amazon keys -->
 
-## Development
+- Get your your key from [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+- If you belong to multiple organizations, you can get your Organization ID from [https://platform.openai.com/account/org-settings](https://platform.openai.com/account/org-settings)
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Quickstart
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+For a quick test you can pass your token directly to a new client:
 
-## Contributing
+```ruby
+client = RubyAmazonBedrock::Client.new(aws_region: "your_aws_region", aws_access_key_id: "your_access_key_id", aws_access_token: "your_access_token")
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ruby-amazon-bedrock.
+### With dotenv
+
+You can use something like [dotenv](https://github.com/motdotla/dotenv) or another environment variables gem to pass the keys safely into your environments.
+Then you can create a client like this:
+
+```ruby
+client = AmazonBedrock::Client.new
+```
+
+### Models
+
+There are different models that can be used to generate text. For a full list and to retrieve information:
+
+<!-- Add examples for each model: -->
+
+```ruby
+client.invoke_model('model-name', 'Prompt')
+```
+
+With options:
+
+```ruby
+client.invoke_model('model-name', 'Prompt', { option1: 'option1', option2: 'option2'})
+```
+
+### AILabs
+
+Give information about this model
+
+```ruby
+response = client.embeddings(
+    parameters: {
+        model: "text-embedding-ada-002",
+        input: "The food was delicious and the waiter..."
+    }
+)
+
+puts response.dig("data", 0, "embedding")
+# => Vector representation of your embedding
+```
+
+### Meta
+
+Give information about this model
+
+```ruby
+client.invoke_model
+```
+
+### Errors
+
+HTTP errors can be caught like this:
+
+```
+  begin
+    AmazonBedrock::Client.new.models.retrieve(id: "text-ada-001")
+  rescue AmazonBedrock::Error => e
+    raise "Got a Faraday error: #{e}"
+  end
+```
+
+<!-- ## Contributing
+
+Bug reports and pull requests are welcome on GitHub at <https://github.com/AAlvAAro/ruby-amazon-bedrock>. -->
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+<!-- ## Code of Conduct
+
+Everyone interacting in the Ruby Amazon Bedrock project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/AAlvAAro/ruby-amazon-bedrock/blob/main/CODE_OF_CONDUCT.md). -->
