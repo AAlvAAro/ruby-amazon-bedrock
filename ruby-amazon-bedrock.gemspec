@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name = "ruby-amazon-bedrock"
   spec.version = Ruby::Amazon::Bedrock::VERSION
   spec.authors = ["Alvaro Delgado"]
-  spec.email = ["hola@alvarodelgad.dev"]
+  spec.email = ["hola@alvarodelgado.dev"]
 
   spec.summary = "Seamless Integration with Amazon Bedrock for AI-Powered Text and Image Generation in Ruby."
   spec.description = "The ruby-amazon-bedrock gem offers Ruby developers an efficient and user-friendly interface to \
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
     `git ls-files -z`.split("\x0").reject do |f|
       (File.expand_path(f) == __FILE__) ||
         f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
-        f.end_with?(*%w[.gem])
+      f.end_with?(*%w[.gem])
     end
   end
   spec.bindir = "exe"
@@ -36,5 +36,4 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "aws-sdk-bedrockruntime"
-  spec.add_dependency "faraday"
 end
