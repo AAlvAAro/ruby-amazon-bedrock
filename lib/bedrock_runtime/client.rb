@@ -2,6 +2,8 @@
 
 require 'aws-sdk-bedrockruntime'
 
+require 'bedrock_runtime/payload_factory'
+
 module RubyAmazonBedrock
   # Client for interfacing with the Amazon Bedrock Runtime.
   #
@@ -31,7 +33,7 @@ module RubyAmazonBedrock
     # 		id: 'model_id', input: 'This is what you want to generate', options: { option_key: 'option_value' }
     # 	)
     def invoke_model(id:, input:, options: {})
-      payload_builder_class = PayloadFactory.new(id, input, options).create
+      payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, input, options).create
       response = @client.invoke_model(payload_builder_class.build)
       JSON.parse(response.body.read, symbolize_names: true)
     end
