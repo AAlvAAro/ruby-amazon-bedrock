@@ -5,7 +5,13 @@ require 'spec_helper'
 require 'webmock/rspec'
 
 RSpec.describe RubyAmazonBedrock::Client do
-  let(:client) { described_class.new }
+  let(:client) do
+    described_class.new(
+      region: ENV.fetch('AWS_REGION', nil),
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
+    )
+  end
 
   describe '#invoke_model' do
     models = [

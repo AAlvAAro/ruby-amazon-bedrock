@@ -11,11 +11,11 @@ module RubyAmazonBedrock
     # Initializes the AWS BedrockRuntime client.
     #
     # @note The AWS credentials and region are fetched from the environment variables.
-    def initialize
+    def initialize(region:, access_key_id:, secret_access_key:)
       @client = Aws::BedrockRuntime::Client.new(
-        region: ENV.fetch("AWS_REGION", nil),
-        access_key_id: ENV.fetch("AWS_ACCESS_KEY_ID", nil),
-        secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY", nil)
+        region: region,
+        access_key_id: access_key_id,
+        secret_access_key: secret_access_key
       )
     end
 
