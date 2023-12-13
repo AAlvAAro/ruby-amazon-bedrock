@@ -1,12 +1,10 @@
-# Ruby OpenAI
+# Ruby Amazon Bedrock
 
-[![Gem Version](https://img.shields.io/gem/v/ruby-openai.svg)](https://rubygems.org/gems/ruby-amazon-bedrock)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AAlvAAro/ruby-amazon-bedrock/blob/main/LICENSE.txt)
 [![CircleCI Build Status](https://circleci.com/gh/AAlvAAro/ruby-amazon-bedrock.svg?style=shield)](https://circleci.com/gh/AAlvAAro/ruby-amazon-bedrock)
 
-Seamless Integration with Amazon Bedrock API for AI-Powered Text and Image Generation in Ruby 🤖 + 💎. [AWS Bedrock API](https://aws.amazon.com/es/bedrock/).
+Seamless Integration with Amazon Bedrock API for AI-Powered Text and Image Generation in Ruby 🤖 + 💎. [Amazon Bedrock API](https://aws.amazon.com/es/bedrock/).
 
-Stream text with GPT-4, transcribe and translate audio with Whisper, or create images with DALL·E...
+Amazon Bedrock is a fully managed service that makes FMs from leading AI startups and Amazon available via an API, so you can choose from a wide range of FMs to find the model that is best suited for your use case.
 
 ### Bundler
 
@@ -36,12 +34,9 @@ and require with:
 require "amazon-bedrock"
 ```
 
-## Usage
+## Credentials
 
-<!-- Get amazon keys -->
-
-- Get your your key from [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
-- If you belong to multiple organizations, you can get your Organization ID from [https://platform.openai.com/account/org-settings](https://platform.openai.com/account/org-settings)
+In order to use Amazon Bedrock, you'll need your secure credentials just as any other AWS service. Get your keys from AWS IAM (Identity and Access Management) [https://us-east-1.console.aws.amazon.com/iam](https://us-east-1.console.aws.amazon.com/iam)
 
 ### Quickstart
 
@@ -51,53 +46,144 @@ For a quick test you can pass your token directly to a new client:
 client = RubyAmazonBedrock::Client.new(aws_region: "your_aws_region", aws_access_key_id: "your_access_key_id", aws_access_token: "your_access_token")
 ```
 
-### With dotenv
+### Models Providers
 
-You can use something like [dotenv](https://github.com/motdotla/dotenv) or another environment variables gem to pass the keys safely into your environments.
-Then you can create a client like this:
+Amazon Bedrock is a fully managed service that makes FMs from leading AI startups and Amazon available via an API, so you can choose from a wide range of FMs to find the model that is best suited for your use case.
+
+### AI21 Labs
+
+Businesses use AI21's Jurassic family of leading LLMs to build generative AI-driven applications and services leveraging existing organizational data. Jurassic supports cross-industry use cases including long and short-form text generation, contextual question answering, summarization, and classification. Designed to follow natural language instructions, Jurassic is trained on a massive corpus of web text and supports six languages in addition to English. [See more ...](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=ai21.j2-ultra-v1)
+
+How to call AI21 models:
+
+Jurassic-2 Ultra
 
 ```ruby
-client = AmazonBedrock::Client.new
+client.invoke_model('ai21.j2-ultra-v1', 'Your prompt goes here ...')
 ```
 
-### Models
-
-There are different models that can be used to generate text. For a full list and to retrieve information:
-
-<!-- Add examples for each model: -->
+Jurassic-2 Mid
 
 ```ruby
-client.invoke_model('model-name', 'Prompt')
+client.invoke_model('ai21.j2-mid-v1', 'Your prompt goes here ...')
 ```
 
-With options:
+### Amazon Titan
+
+Amazon Titan Foundation Models are pre-trained on large datasets, making them powerful, general-purpose models. Use them as is, or customize them by fine tuning the models with your own data for a particular task without annotating large volumes of data. [See more ...](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-embed-text-v1)
+
+How to call Amazon Titan text models:
+
+Titan Text G1 - Lite
 
 ```ruby
-client.invoke_model('model-name', 'Prompt', { option1: 'option1', option2: 'option2'})
+client.invoke_model('amazon.titan-text-lite-v1', 'Your prompt goes here ...')
 ```
 
-### AILabs
-
-Give information about this model
+Titan Text G1 - Express
 
 ```ruby
-response = client.embeddings(
-    parameters: {
-        model: "text-embedding-ada-002",
-        input: "The food was delicious and the waiter..."
-    }
-)
+client.invoke_model('amazon.titan-text-express-v1', 'Your prompt goes here ...')
+```
 
-puts response.dig("data", 0, "embedding")
-# => Vector representation of your embedding
+### Anthropic
+
+Anthropic offers the Claude family of large language models purpose built for conversations, summarization, Q&A, workflow automation, coding and more. Early customers report that Claude is much less likely to produce harmful outputs, easier to converse with, and more steerable - so you can get your desired output with less effort. Claude can also take direction on personality, tone, and behavior.
+
+How to call Anthropic models:
+
+Claude Instant 1.2
+
+```ruby
+client.invoke_model('anthropic.claude-instant-v1', 'Your prompt goes here ...')
+```
+
+Claude 1.3
+
+```ruby
+client.invoke_model('anthropic.claude-v1', 'Your prompt goes here ...')
+```
+
+Claude 2
+
+```ruby
+client.invoke_model('anthropic.claude-v2', 'Your prompt goes here ...')
+```
+
+Claude 2.1
+
+<!-- TODO: Add this model to the Anthropic library -->
+
+```ruby
+client.invoke_model('anthropic.claude-v2:1', 'Your prompt goes here ...')
+```
+
+### Cohere
+
+Cohere models are text generation models for business use cases. Cohere models are trained on data that supports reliable business applications, like text generation, summarization, copywriting, dialogue, extraction, and question answering.
+
+How to call Cohere command models:
+
+Command
+
+```ruby
+client.invoke_model('cohere.command-text-v14', 'Your prompt goes here ...')
+```
+
+Command Light
+
+```ruby
+client.invoke_model('cohere.command-light-text-v14', 'Your prompt goes here ...')
+```
+
+How to call Cohere embed models:
+
+Command English
+
+```ruby
+client.invoke_model('cohere.embed-english-v3', 'Your prompt goes here ...')
+```
+
+Command Embed Multilingual
+
+```ruby
+client.invoke_model('cohere.embed-multilingual-v3', 'Your prompt goes here ...')
 ```
 
 ### Meta
 
-Give information about this model
+Meta is looking to unlock the power of large language models. Our latest version of Llama is now accessible to individuals, creators, researchers and businesses of all sizes so that they can experiment, innovate and scale their ideas responsibly.
+
+How to call Meta models:
+
+Llama 2 Chat 13B
 
 ```ruby
-client.invoke_model
+client.invoke_model('meta.llama2-13b-chat-v1', 'Your prompt goes here ...')
+```
+
+Llama 2 Chat 70B
+
+```ruby
+client.invoke_model('meta.llama2-70b-chat-v1', 'Your prompt goes here ...')
+```
+
+### Stability AI
+
+Stability AI is the world's leading open-source generative artificial intelligence company, collaborating with public and private sector partners to bring next generation infrastructure to a global audience.
+
+How to call Stability AI models:
+
+SDXL 0.8
+
+```ruby
+client.invoke_model('stability.stable-diffusion-xl-v0', 'Your prompt goes here ...')
+```
+
+SDXL 1.0
+
+```ruby
+client.invoke_model('stability.stable-diffusion-xl-v1', 'Your prompt goes here ...')
 ```
 
 ### Errors
