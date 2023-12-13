@@ -31,7 +31,7 @@ $ gem install ruby-amazon-bedrock
 and require with:
 
 ```ruby
-require "amazon-bedrock"
+require "bedrock"
 ```
 
 ## Credentials
