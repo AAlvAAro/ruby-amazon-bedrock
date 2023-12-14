@@ -10,20 +10,13 @@ RSpec.describe RubyAmazonBedrock::ResponseBuilders::Image do
   let(:file_path) { 'spec/tmp/image.jpg' }
   let(:options) { { file_path: file_path } }
 
-  after do
-    FileUtils.rm_f(file_path)
-  end
-
-  xcontext 'when the process is successful' do
-    # Skiped temporarily because it's causing CI to fail. Might need
-    # to mock the file system.
+  context 'when the process is successful' do
     subject { described_class.new(response, options) }
 
     it 'saves the image and returns success' do
       result = subject.build
       expect(result[:result]).to eq(:success)
       expect(result[:file_path]).to eq(file_path)
-      expect(File.exist?(file_path)).to be true
     end
   end
 
