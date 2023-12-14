@@ -1,3 +1,8 @@
+## [0.2.0] - 2023-12-14
+
+- Add Text and Image builders to be able to return text or save images depending on the model use case.
+- Update README.md documentation to add more details about Amazon Bedrock settings and model usage.
+
 ## [0.1.1] - 2023-12-13
 
 - Add documentation to README.md
