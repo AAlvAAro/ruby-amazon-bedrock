@@ -1,14 +1,16 @@
 # Ruby Amazon Bedrock
 
-[![CircleCI Build Status](https://circleci.com/gh/AAlvAAro/ruby-amazon-bedrock.svg?style=shield)](https://circleci.com/gh/AAlvAAro/ruby-amazon-bedrock)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main)
 
 Seamless Integration with Amazon Bedrock API for AI-Powered Text and Image Generation in Ruby 🤖 + 💎. [Amazon Bedrock API](https://aws.amazon.com/es/bedrock/).
 
 Amazon Bedrock is a fully managed service that makes FMs from leading AI startups and Amazon available via an API, so you can choose from a wide range of FMs to find the model that is best suited for your use case.
 
-## Bundler
+## Installation
 
-Add this line to your application's Gemfile:
+### Bundler
+
+Add the following line to your application's Gemfile:
 
 ```ruby
 gem "ruby-amazon-bedrock"
@@ -20,7 +22,7 @@ And then execute:
 $ bundle install
 ```
 
-## Gem install
+### Gem install
 
 Or install with:
 
@@ -38,12 +40,22 @@ require "bedrock"
 
 In order to use Amazon Bedrock, you'll need your secure credentials just as any other AWS service. Get your keys from AWS IAM (Identity and Access Management) [https://us-east-1.console.aws.amazon.com/iam](https://us-east-1.console.aws.amazon.com/iam)
 
+## Model access
+
+To use Bedrock, you must [request access to Bedrock's FMs](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess). To do so, you will need to have the correct IAM Permissions. For certain models, you may first need to submit use case details before you are able to request access.
+
+![Model Access Screen](assets/model-access.png)
+
+## Model pricing
+
+Be aware that by using `ruby-amazon-bedrock` gem in conjunction with Amazon Bedrock, you may incur costs associated with the use of Amazon Bedrock services. As the user, you are solely responsible for any and all costs that arise from your use of Amazon Bedrock. You can see more details about pricing [here](https://aws.amazon.com/bedrock/pricing/)
+
 ## Quickstart
 
-For a quick test you can pass your token directly to a new client:
+Instantiate a client by passing your AWS IAM credentials:
 
 ```ruby
-client = RubyAmazonBedrock::Client.new(region: "your_aws_region", access_key_id: "your_access_key_id", access_token: "your_access_token")
+client = RubyAmazonBedrock::Client.new(region: "aws_region", access_key_id: "access_key_id", access_token: "access_token")
 ```
 
 ## Models Providers
@@ -78,7 +90,7 @@ Amazon Titan Foundation Models are pre-trained on large datasets, making them po
 
 How to call Amazon Titan text models:
 
-_Titan Text G1 - Lite_
+_*Titan Text G1 - Lite*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-lite-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-lite-v1)
 
@@ -98,7 +110,7 @@ client.invoke_model(id: 'amazon.titan-text-lite-v1', input: 'Generate a story ab
 
 <br>
 
-_Titan Text G1 - Express_
+_*Titan Text G1 - Express*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-express-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-express-v1)
 
@@ -122,7 +134,7 @@ Anthropic offers the Claude family of large language models purpose built for co
 
 How to call Anthropic models:
 
-_Claude Instant 1.2_
+_*Claude Instant 1.2*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-instant-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-instant-v1)
 
@@ -140,7 +152,7 @@ client.invoke_model('anthropic.claude-instant-v1', 'What is a neural network?')
 
 <br>
 
-_Claude 1.3_
+_*Claude 1.3*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-v1)
 
@@ -158,7 +170,7 @@ client.invoke_model(id: 'anthropic.claude-instant-v1', input: "You will be actin
 
 <br>
 
-_Claude 2_
+_*Claude 2*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-v2](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-v2)
 
@@ -182,7 +194,7 @@ Cohere models are text generation models for business use cases. Cohere models a
 
 How to call Cohere command models:
 
-_Command_
+_*Command*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.command-text-v14](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.command-text-v14)
 
@@ -203,7 +215,7 @@ client.invoke_model(id: 'cohere.command-text-v14', input: 'Generate a twit about
 
 <br>
 
-_Command Light_
+_*Command Light*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.command-light-text-v14](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.command-light-text-v14)
 
@@ -224,7 +236,7 @@ client.invoke_model(id: 'cohere.command-light-text-v14', input: 'Generate a face
 
 How to call Cohere embed models:
 
-_Embed English_
+_*Embed English*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.embed-english-v3](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.embed-english-v3)
 
@@ -237,7 +249,7 @@ Supports: Semantic search, retrieval-augmented generation (RAG), classification,
 
 <br>
 
-_Embed Multilingual_
+_*Embed Multilingual*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.embed-multilingual-v3](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.embed-multilingual-v3)
 
@@ -252,7 +264,7 @@ Meta is looking to unlock the power of large language models. Our latest version
 
 How to call Meta models:
 
-_Llama 2 Chat 13B_
+_*Llama 2 Chat 13B*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=meta.llama2-13b-chat-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=meta.llama2-13b-chat-v1)
 
@@ -271,7 +283,7 @@ client.invoke_model(id: 'meta.llama2-13b-chat-v1', input: 'Generate an Instagram
 
 <br>
 
-_Llama 2 Chat 70B_
+_*Llama 2 Chat 70B*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=meta.llama2-70b-chat-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=meta.llama2-70b-chat-v1)
 
@@ -294,7 +306,7 @@ Stability AI is the world's leading open-source generative artificial intelligen
 
 How to call Stability AI models:
 
-_SDXL 0.8_
+_*SDXL 0.8*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v0](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v0)
 
@@ -308,7 +320,7 @@ client.invoke_model(id: 'stability.stable-diffusion-xl-v0', input: 'Generate an 
 
 <br>
 
-_SDXL 1.0_
+_*SDXL 1.0*_
 
 ```ruby
 client.invoke_model(id: 'stability.stable-diffusion-xl-v1', input: 'Generate an image of a hamster driving an F1 car')
@@ -319,10 +331,6 @@ client.invoke_model(id: 'stability.stable-diffusion-xl-v1', input: 'Generate an 
 <!-- ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at <https://github.com/AAlvAAro/ruby-amazon-bedrock>. -->
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 <!-- ## Code of Conduct
 
