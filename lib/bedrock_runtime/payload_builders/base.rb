@@ -28,6 +28,12 @@ module RubyAmazonBedrock
       def model_id
         raise NotImplementedError
       end
+
+      # Abstract method to retrieve the model type.
+      # @return [Symbol] the model result type: :text (default) or :image.
+      def type
+        :text
+      end
     end
   end
 end

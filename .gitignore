@@ -8,6 +8,7 @@
 /tmp/
 .env
 *.gem
+image.jpg
 
 # rspec failure tracking
 .rspec_status

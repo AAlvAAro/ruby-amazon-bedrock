@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require 'bedrock_runtime/client'
 require 'spec_helper'
-require 'webmock/rspec'
+require 'bedrock_runtime/client'
 
 RSpec.describe RubyAmazonBedrock::Client do
   let(:client) do

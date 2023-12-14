@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require 'base64'
 require 'aws-sdk-bedrockruntime'
-
 require 'bedrock_runtime/payload_factory'
+require 'bedrock_runtime/response_factory'
+require 'pry'
 
 module RubyAmazonBedrock
   # Client for interfacing with the Amazon Bedrock Runtime.
@@ -35,7 +37,10 @@ module RubyAmazonBedrock
     def invoke_model(id:, input:, options: {})
       payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, input, options).create
       response = @client.invoke_model(payload_builder_class.build)
-      JSON.parse(response.body.read, symbolize_names: true)
+
+      response_builder_class = RubyAmazonBedrock::ResponseFactory.new(payload_builder_class.type, response,
+                                                                      options).create
+      response_builder_class.build
     end
   end
 end

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'bedrock'
-require 'bedrock_runtime/client'
-require 'bedrock_runtime/payload_factory'
-
 require 'dotenv/load'
 require 'simplecov'
 require 'vcr'
+
+require 'amazon_bedrock'
+require 'bedrock_runtime/client'
+require 'bedrock_runtime/payload_factory'
 
 SimpleCov.start
 

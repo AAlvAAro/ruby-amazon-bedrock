@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/bedrock/version"
+require_relative "lib/amazon_bedrock/version"
 
 Gem::Specification.new do |spec|
   spec.name = "ruby-amazon-bedrock"
-  spec.version = Ruby::Amazon::Bedrock::VERSION
+  spec.version = RubyAmazonBedrock::VERSION
   spec.authors = ["Alvaro Delgado"]
   spec.email = ["hola@alvarodelgado.dev"]
 

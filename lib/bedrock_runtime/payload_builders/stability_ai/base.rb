@@ -42,6 +42,10 @@ module RubyAmazonBedrock
         def model_id
           # noop
         end
+
+        def type
+          :image
+        end
       end
     end
   end

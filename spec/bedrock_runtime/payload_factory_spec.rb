@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require 'bedrock_runtime/payload_factory'
 require 'spec_helper'
-
-require 'pry'
+require 'bedrock_runtime/payload_factory'
 
 RSpec.describe RubyAmazonBedrock::PayloadFactory do
   let(:bedrock_models) do

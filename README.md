@@ -33,7 +33,7 @@ $ gem install ruby-amazon-bedrock
 and require with:
 
 ```ruby
-require "bedrock"
+require "amazon_bedrock"
 ```
 
 ## Credentials
@@ -44,7 +44,7 @@ In order to use Amazon Bedrock, you'll need your secure credentials just as any 
 
 To use Bedrock, you must [request access to Bedrock's FMs](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess). To do so, you will need to have the correct IAM Permissions. For certain models, you may first need to submit use case details before you are able to request access.
 
-![Model Access Screen](assets/model-access.png)
+<img src="assets/model-access.png" width="500"/>
 
 ## Model pricing
 
@@ -313,20 +313,51 @@ _*SDXL 0.8*_
 Supports: image generation, image editing
 
 ```ruby
-client.invoke_model(id: 'stability.stable-diffusion-xl-v0', input: 'Generate an image of a hamster flying a helicopter')
+client.invoke_model(id: 'stability.stable-diffusion-xl-v0', input: 'Generate an image of an orca jumping out of the water', options: { file_path: 'path/to/your/image.jpg' })
+# NOTE: If file_path is not provided the image will be saved at 'image.jpg'
 
-# TODO: save the response into an image file
+# Success Response
+{
+  result: :success,
+  file_path: 'path/to/your/image.jpg'
+}
+
+# Failure Response
+{
+  result: :failure,
+  error: ErrorClass
+}
 ```
+
+Example generated image
+
+<img src="assets/orca.jpg" width="350"/>
 
 <br>
 
 _*SDXL 1.0*_
 
 ```ruby
-client.invoke_model(id: 'stability.stable-diffusion-xl-v1', input: 'Generate an image of a hamster driving an F1 car')
+client.invoke_model(id: 'stability.stable-diffusion-xl-v1', input: 'Generate an image of a white gold ring with a ruby on it', options: { file_path: 'path/to/your/image.jpg' })
+# NOTE: If file_path is not provided the image will be saved at 'image.jpg'
 
-# TODO: save the response into an image file
+# Success Response
+{
+  result: :success,
+  file_path: 'path/to/your/image.jpg'
+}
+
+# Failure Response
+{
+  result: :failure,
+  error: ErrorClass
+}
+
 ```
+
+Example generated image
+
+<img src="assets/ruby.jpg" width="350"/>
 
 <!-- ## Contributing
 
