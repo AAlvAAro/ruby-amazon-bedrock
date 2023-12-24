@@ -11,8 +11,8 @@ RSpec.describe RubyAmazonBedrock::PayloadBuilders::Ai21Labs::Base do
       prompt: input,
       maxTokens: 200,
       temperature: 0,
-      topP: 250,
-      stop_sequences: [],
+      topP: 1.0,
+      stopSequences: [],
       countPenalty: { scale: 0 },
       presencePenalty: { scale: 0 },
       frequencyPenalty: { scale: 0 }

@@ -50,8 +50,8 @@ module RubyAmazonBedrock
     # @return [Hash] The mapping of model identifiers to builder classes.
     def models_to_builders
       {
-        'ai21labs.j2-mid-v1' => PayloadBuilders::Ai21Labs::J2MidV1,
-        'ai21labs.j2-ultra-v1' => PayloadBuilders::Ai21Labs::J2UltraV1,
+        'ai21.j2-mid-v1' => PayloadBuilders::Ai21Labs::J2MidV1,
+        'ai21.j2-ultra-v1' => PayloadBuilders::Ai21Labs::J2UltraV1,
         'amazon.titan-image-generator-v1' => PayloadBuilders::Amazon::TitanImageGeneratorV1,
         'amazon.titan-text-lite-v1' => PayloadBuilders::Amazon::TitanTextLiteV1,
         'amazon.titan-text-express-v1' => PayloadBuilders::Amazon::TitanTextExpressV1,

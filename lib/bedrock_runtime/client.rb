@@ -4,7 +4,6 @@ require 'base64'
 require 'aws-sdk-bedrockruntime'
 require 'bedrock_runtime/payload_factory'
 require 'bedrock_runtime/response_factory'
-require 'pry'
 
 module RubyAmazonBedrock
   # Client for interfacing with the Amazon Bedrock Runtime.
@@ -15,11 +14,13 @@ module RubyAmazonBedrock
     # Initializes the AWS BedrockRuntime client.
     #
     # @note The AWS credentials and region are fetched from the environment variables.
-    def initialize(region:, access_key_id:, secret_access_key:)
+    def initialize(region: nil, access_key_id: nil, secret_access_key: nil)
+      config = RubyAmazonBedrock.configuration || RubyAmazonBedrock::Configuration.new
+
       @client = Aws::BedrockRuntime::Client.new(
-        region: region,
-        access_key_id: access_key_id,
-        secret_access_key: secret_access_key
+        region: region || config.region,
+        access_key_id: access_key_id || config.access_key_id,
+        secret_access_key: secret_access_key || config.secret_access_key
       )
     end
 

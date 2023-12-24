@@ -14,7 +14,7 @@ module RubyAmazonBedrock
         #
         # @return [String] 'ai21labs.j2-ultra-v1'
         def model_id
-          'ai21labs.j2-ultra-v1'
+          'ai21.j2-ultra-v1'
         end
       end
     end

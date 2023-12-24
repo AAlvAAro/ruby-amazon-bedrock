@@ -1,6 +1,7 @@
 # Ruby Amazon Bedrock
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main)
+[![Gem Version](https://badge.fury.io/rb/ruby-amazon-bedrock.svg)](https://badge.fury.io/rb/ruby-amazon-bedrock)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main.svg?style=shield&circle-token=31edf35e4c3f323ce0044c6fceadf9ffb15f5d3c)](https://dl.circleci.com/status-badge/redirect/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main)
 
 Seamless Integration with Amazon Bedrock API for AI-Powered Text and Image Generation in Ruby 🤖 + 💎. [Amazon Bedrock API](https://aws.amazon.com/es/bedrock/).
 
@@ -13,7 +14,7 @@ Amazon Bedrock is a fully managed service that makes FMs from leading AI startup
 Add the following line to your application's Gemfile:
 
 ```ruby
-gem "ruby-amazon-bedrock"
+gem "ruby-amazon-bedrock", "~> 0.2.1"
 ```
 
 And then execute:
@@ -27,7 +28,7 @@ $ bundle install
 Or install with:
 
 ```bash
-$ gem install ruby-amazon-bedrock
+$ gem install ruby-amazon-bedrock -v 0.2.1
 ```
 
 and require with:
@@ -55,34 +56,78 @@ Be aware that by using `ruby-amazon-bedrock` gem in conjunction with Amazon Bedr
 Instantiate a client by passing your AWS IAM credentials:
 
 ```ruby
-client = RubyAmazonBedrock::Client.new(region: "aws_region", access_key_id: "access_key_id", access_token: "access_token")
+client = RubyAmazonBedrock::Client.new(
+  region: "AWS_REGION",
+  access_key_id: "AWS_ACCESS_KEY_ID",
+  access_token: "AWS_SECRET_ACCESS_KEY"
+)
 ```
 
-## Models Providers
+## With Configuration
+
+```ruby
+RubyAmazonBedrock.configure do |config|
+  config.region = ENV.fetch('AWS_REGION', nil)
+  config.access_key_id = ENV.fetch('AWS_ACCESS_KEY_ID', nil)
+  config.secret_access_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
+end
+
+client = RubyAmazonBedrock::Client.new
+```
+
+## Model Providers
 
 Amazon Bedrock is a fully managed service that makes FMs from leading AI startups and Amazon available via an API, so you can choose from a wide range of FMs to find the model that is best suited for your use case.
 
-<!-- ### AI21 Labs
+### AI21 Labs
 
 Businesses use AI21's Jurassic family of leading LLMs to build generative AI-driven applications and services leveraging existing organizational data. Jurassic supports cross-industry use cases including long and short-form text generation, contextual question answering, summarization, and classification. Designed to follow natural language instructions, Jurassic is trained on a massive corpus of web text and supports six languages in addition to English. [See more ...](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=ai21.j2-ultra-v1)
 
 How to call AI21 models:
 
-Jurassic-2 Ultra
+_*Jurassic-2 Ultra*_
 
 Supported use cases: Open book question answering, summarization, draft generation, information extraction, ideation
 
 Languages: English, Spanish, French, German, Portuguese, Italian, Dutch
 
 ```ruby
-client.invoke_model('ai21.j2-ultra-v1', 'Your prompt goes here ...')
+client.invoke_model(id: 'ai21.j2-ultra-v1', input: "What's natural language processing?")
+
+# Response
+{:id=>1234,
+ :prompt=>
+  {:text=>"Describe how an LLM works",
+   :tokens=>
+    [{:generatedToken=>{:token=>"▁Describe", :logprob=>-10.674324035644531, :raw_logprob=>-10.674324035644531},
+ :completions=>
+  [{:data=>
+    {:text=>
+       "\nNatural language processing (NLP) is a field of computer science, artificial intelligence, and linguistics concerned with the interactions between computers and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data. The goal of NLP is to provide computers with the ability to read, understand, and generate human language.",
+      :tokens=>
+       [{:generatedToken=>{:token=>"<|newline|>", :logprob=>0.0, :raw_logprob=>-0.00046850196667946875},
 ```
 
-Jurassic-2 Mid
+_*Jurassic-2 Mid*_
 
 ```ruby
-client.invoke_model('ai21.j2-mid-v1', 'Your prompt goes here ...')
-``` -->
+client.invoke_model(id: 'ai21.j2-mid-v1', input: "What's GenAI?")
+
+# Response
+{:id=>1234,
+ :prompt=>
+  {:text=>"What's GenAI?",
+   :tokens=>
+    [{:generatedToken=>{:token=>"▁What's", :logprob=>-9.553738594055176, :raw_logprob=>-9.553738594055176},
+      :topTokens=>nil,
+      :textRange=>{:start=>0, :end=>6}},
+ :completions=>
+  [{:data=>
+     {:text=>
+       "\nGenAI is a proposed standard for a generic AI language, which would allow AI systems to communicate and reason with each other in a common language. The goal of GenAI is to create a universal language that can be used by all AI systems, regardless of their specific task or underlying architecture. This would make it easier for AI systems to work together and learn from each other, and it would also make it easier for humans to interact with and understand AI systems.",
+      :tokens=>
+       [{:generatedToken=>{:token=>"<|newline|>", :logprob=>0.0, :raw_logprob=>-0.0009662011871114373},
+```
 
 ### Amazon Titan
 

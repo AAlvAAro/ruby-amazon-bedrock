@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
-require 'simplecov'
 require 'vcr'
 
 require 'amazon_bedrock'
 require 'bedrock_runtime/client'
 require 'bedrock_runtime/payload_factory'
-
-SimpleCov.start
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

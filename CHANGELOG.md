@@ -1,3 +1,9 @@
+## [0.2.1] - 2023-12-25
+
+- Make gem configurable
+- Fix A121 Labs payloads
+- Update README.md with A121 Labs documentation
+
 ## [0.2.0] - 2023-12-14
 
 - Add Text and Image builders to be able to return text or save images depending on the model use case.

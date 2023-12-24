@@ -5,8 +5,8 @@ require 'bedrock_runtime/payload_factory'
 
 RSpec.describe RubyAmazonBedrock::PayloadFactory do
   let(:bedrock_models) do
-    ["ai21labs.j2-mid-v1",
-     "ai21labs.j2-ultra-v1",
+    ["ai21.j2-mid-v1",
+     "ai21.j2-ultra-v1",
      "amazon.titan-image-generator-v1",
      "amazon.titan-text-lite-v1",
      "amazon.titan-text-express-v1",
