@@ -29,7 +29,7 @@ module RubyAmazonBedrock
   class PayloadFactory
     def initialize(model_id, input, options = {})
       @model_id = model_id
-      @input = input
+      @prompt = input
       @options = options
     end
 
@@ -42,7 +42,7 @@ module RubyAmazonBedrock
 
       raise UnknownModelError, "Unknown modelId: #{@model_id}" unless builder_class
 
-      builder_class.new(@input, @options)
+      builder_class.new(@prompt, @options)
     end
 
     # Defines a mapping from model identifiers to their respective builder classes.
@@ -55,8 +55,8 @@ module RubyAmazonBedrock
         'amazon.titan-image-generator-v1' => PayloadBuilders::Amazon::TitanImageGeneratorV1,
         'amazon.titan-text-lite-v1' => PayloadBuilders::Amazon::TitanTextLiteV1,
         'amazon.titan-text-express-v1' => PayloadBuilders::Amazon::TitanTextExpressV1,
-        'anthropic.claude-v1' => PayloadBuilders::Anthropic::ClaudeV1,
         'anthropic.claude-instant-v1' => PayloadBuilders::Anthropic::ClaudeInstantV1,
+        'anthropic.claude-v1' => PayloadBuilders::Anthropic::ClaudeV1,
         'anthropic.claude-v2' => PayloadBuilders::Anthropic::ClaudeV2,
         'cohere.command-light-text-v14' => PayloadBuilders::Cohere::CommandLightTextV14,
         'cohere.command-text-v14' => PayloadBuilders::Cohere::CommandTextV14,

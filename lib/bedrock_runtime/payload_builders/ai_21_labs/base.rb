@@ -34,20 +34,32 @@ module RubyAmazonBedrock
             content_type: 'application/json',
             accept: '*/*',
             body: {
-              prompt: @input,
-              maxTokens: 200,
-              temperature: 0,
-              topP: 1.0,
-              stopSequences: [],
-              countPenalty: { scale: 0 },
-              presencePenalty: { scale: 0 },
-              frequencyPenalty: { scale: 0 }
+              prompt: @prompt,
+              maxTokenCount: parameters[:maxTokenCount],
+              temperature: parameters[:temperature],
+              topP: parameters[:topP],
+              stopSequences: parameters[:stopSequences],
+              countPenalty: { scale: parameters[:countPenalty] },
+              presencePenalty: { scale: parameters[:presencePenalty] },
+              frequencyPenalty: { scale: parameters[:frequencyPenalty] }
             }.to_json
           }
         end
 
         def model_id
           # noop
+        end
+
+        def parameters # rubocop:disable Metrics/CyclomaticComplexity
+          {
+            maxTokenCount: @options[:max_tokens] || 200,
+            stopSequences: @options[:stop_sequences] || [],
+            temperature: @options[:temperature] || 0,
+            topP: @options[:top_p] || 1,
+            countPenalty: @options[:count_penalty] || 0,
+            presencePenalty: @options[:presence_penalty] || 0,
+            frequencyPenalty: @options[:frequency_penalty] || 0
+          }
         end
       end
     end

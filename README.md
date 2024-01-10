@@ -14,7 +14,7 @@ Amazon Bedrock is a fully managed service that makes FMs from leading AI startup
 Add the following line to your application's Gemfile:
 
 ```ruby
-gem "ruby-amazon-bedrock", "~> 0.2.1"
+gem "ruby-amazon-bedrock", "~> 0.2.2"
 ```
 
 And then execute:
@@ -75,6 +75,10 @@ end
 client = RubyAmazonBedrock::Client.new
 ```
 
+## Options
+
+The options argument enhances the method's flexibility by allowing additional, model-specific configurations. If not explicitly provided, the method defaults to a set of standard Model parameters. You can see more details about a Model's optional parameters.
+
 ## Model Providers
 
 Amazon Bedrock is a fully managed service that makes FMs from leading AI startups and Amazon available via an API, so you can choose from a wide range of FMs to find the model that is best suited for your use case.
@@ -83,16 +87,32 @@ Amazon Bedrock is a fully managed service that makes FMs from leading AI startup
 
 Businesses use AI21's Jurassic family of leading LLMs to build generative AI-driven applications and services leveraging existing organizational data. Jurassic supports cross-industry use cases including long and short-form text generation, contextual question answering, summarization, and classification. Designed to follow natural language instructions, Jurassic is trained on a massive corpus of web text and supports six languages in addition to English. [See more ...](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=ai21.j2-ultra-v1)
 
+Options for these models are:
+
+```ruby
+  {
+    temperature: 0.5,     # float
+    max_tokens: 200,      # integer
+    stop_sequences: [],   # [string]
+    top_p: 0.5,           # float
+    count_penalty: 0,     # integer
+    presence_penalty: 0,  # integer
+    frequency_penalty: 0  # integer
+  }
+```
+
+For more documentation about the parameter data types and values you can [See more details...][https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-jurassic2.html]
+
 How to call AI21 models:
 
 _*Jurassic-2 Ultra*_
 
-Supported use cases: Open book question answering, summarization, draft generation, information extraction, ideation
+Supports: Open book question answering, summarization, draft generation, information extraction, ideation
 
 Languages: English, Spanish, French, German, Portuguese, Italian, Dutch
 
 ```ruby
-client.invoke_model(id: 'ai21.j2-ultra-v1', input: "What's natural language processing?")
+client.invoke_model(id: 'ai21.j2-ultra-v1', prompt: "What's natural language processing?", options: {})
 
 # Response
 {:id=>1234,
@@ -111,7 +131,7 @@ client.invoke_model(id: 'ai21.j2-ultra-v1', input: "What's natural language proc
 _*Jurassic-2 Mid*_
 
 ```ruby
-client.invoke_model(id: 'ai21.j2-mid-v1', input: "What's GenAI?")
+client.invoke_model(id: 'ai21.j2-mid-v1', prompt: "What's GenAI?", options: {})
 
 # Response
 {:id=>1234,
@@ -133,6 +153,19 @@ client.invoke_model(id: 'ai21.j2-mid-v1', input: "What's GenAI?")
 
 Amazon Titan Foundation Models are pre-trained on large datasets, making them powerful, general-purpose models. Use them as is, or customize them by fine tuning the models with your own data for a particular task without annotating large volumes of data. [See more ...](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-embed-text-v1)
 
+Options for these models are:
+
+```ruby
+  {
+    temperature: 0.5,   # float
+    top_p: 0.5,         # float
+    max_tokens: 512,    # integer
+    stop_sequences: []  # [string]
+  }
+```
+
+For more documentation about the parameter data types and values you can [See more details...][https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-titan-text.html]
+
 How to call Amazon Titan text models:
 
 _*Titan Text G1 - Lite*_
@@ -142,7 +175,7 @@ _*Titan Text G1 - Lite*_
 Supports: Text generation, Code generation, Rich text formatting, Orchestration (Agents), Fine Tuning.
 
 ```ruby
-client.invoke_model(id: 'amazon.titan-text-lite-v1', input: 'Generate a story about rubies and gems')
+client.invoke_model(id: 'amazon.titan-text-lite-v1', prompt: 'Generate a story about rubies and gems', options: {})
 
 # Response
 {:inputTextTokenCount=>8,
@@ -153,14 +186,12 @@ client.invoke_model(id: 'amazon.titan-text-lite-v1', input: 'Generate a story ab
     :completionReason=>"FINISH"}]}
 ```
 
-<br>
-
 _*Titan Text G1 - Express*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-express-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-express-v1)
 
 ```ruby
-client.invoke_model(id: 'amazon.titan-text-express-v1', input: 'Generate a post about cats formatted with HTML tags')
+client.invoke_model(id: 'amazon.titan-text-express-v1', prompt: 'Generate a post about cats formatted with HTML tags', options: {})
 
 # Response
 {:inputTextTokenCount=>9,
@@ -176,6 +207,20 @@ Supports: Text generation, Code generation, Rich text formatting, Orchestration 
 ### Anthropic
 
 Anthropic offers the Claude family of large language models purpose built for conversations, summarization, Q&A, workflow automation, coding and more. Early customers report that Claude is much less likely to produce harmful outputs, easier to converse with, and more steerable - so you can get your desired output with less effort. Claude can also take direction on personality, tone, and behavior.
+
+Options for these models are:
+
+```ruby
+  {
+    temperature: 0.3,   # float
+    top_p: 0.5,         # float
+    top_k: 0.5,         # float
+    max_tokens: 1000,   # integer
+    stop_sequences: []  # [string]
+  }
+```
+
+For more documentation about the parameter data types and values you can [See more details...][https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-claude.html]
 
 How to call Anthropic models:
 
@@ -204,7 +249,7 @@ _*Claude 1.3*_
 Supports: Question answering, [information extraction](https://docs.anthropic.com/claude/docs/text-processing), removing PII, content generation, [multiple choice classification](https://docs.anthropic.com/claude/docs/multiple-choice-and-classification), [Roleplay](https://docs.anthropic.com/claude/docs/roleplay-dialogue), comparing text, summarization, [document Q&A with citation](https://docs.anthropic.com/claude/docs/advanced-text-analysis)
 
 ```ruby
-client.invoke_model(id: 'anthropic.claude-instant-v1', input: "You will be acting as a AI customer success agent for a company called Acme Dynamics.")
+client.invoke_model(id: 'anthropic.claude-v1', prompt: "You will be acting as a AI customer success agent for a company called Acme Dynamics.")
 
 # Response
 {:completion=>
@@ -222,7 +267,7 @@ _*Claude 2*_
 Supports: Question answering, [information extraction](https://docs.anthropic.com/claude/docs/text-processing), removing PII, content generation, [multiple choice classification](https://docs.anthropic.com/claude/docs/multiple-choice-and-classification), [Roleplay](https://docs.anthropic.com/claude/docs/roleplay-dialogue), comparing text, summarization, [document Q&A with citation](https://docs.anthropic.com/claude/docs/advanced-text-analysis)
 
 ```ruby
-client.invoke_model(id: 'anthropic.claude-v2', input: "I'm going to provide some text. I want to remove all person
+client.invoke_model(id: 'anthropic.claude-v2', prompt: "I'm going to provide some text. I want to remove all person
 ally identifying information from this text and replace it with XXX. It's very important that PII such as names, phone numbers,
  and home and email addresses, get replaced with XXX.")
 
@@ -237,6 +282,24 @@ ally identifying information from this text and replace it with XXX. It's very i
 
 Cohere models are text generation models for business use cases. Cohere models are trained on data that supports reliable business applications, like text generation, summarization, copywriting, dialogue, extraction, and question answering.
 
+Options for command models are:
+
+```ruby
+  {
+    temperature: 0.3,           # float
+    top_p: 0.5,                 # float
+    top_k: 0.5,                 # float
+    max_tokens: 1000,           # integer
+    stop_sequences: [],         # [string]
+    num_generations: 2,         # integer
+    return_likelihoods: 'ALL',  # string
+    stream: true,               # boolean
+    truncate: 'END'             # srtring
+  }
+```
+
+For more documentation about the parameter data types and values you can [See more details...][https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-cohere-command.html]
+
 How to call Cohere command models:
 
 _*Command*_
@@ -246,7 +309,7 @@ _*Command*_
 Supports: Summarization, copywriting, dialogue, extraction, and question answering.
 
 ```ruby
-client.invoke_model(id: 'cohere.command-text-v14', input: 'Generate a twit about why Ruby on Rails is a great tool for building a startup. Write a few hashtags')
+client.invoke_model(id: 'cohere.command-text-v14', prompt: 'Generate a twit about why Ruby on Rails is a great tool for building a startup. Write a few hashtags')
 
 # Response
 {:generations=>
@@ -267,7 +330,7 @@ _*Command Light*_
 Supports: Summarization, copywriting, dialogue, extraction, and question answering.
 
 ```ruby
-client.invoke_model(id: 'cohere.command-light-text-v14', input: 'Generate a facebook post about GenAI models available at Amazon Bedrock')
+client.invoke_model(id: 'cohere.command-light-text-v14', prompt: 'Generate a facebook post about GenAI models available at Amazon Bedrock')
 
 # Response
 {:generations=>
@@ -279,6 +342,17 @@ client.invoke_model(id: 'cohere.command-light-text-v14', input: 'Generate a face
  :prompt=>"Generate a facebook post about GenAI models available at Amazon Bedrock:"}
 ```
 
+Options for embed models are:
+
+```ruby
+  {
+    input_type: 'classification', # string
+    truncate: 'END'               # string
+  }
+```
+
+For more documentation about the parameter data types and values you can [See more details...][https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-embed.html]
+
 How to call Cohere embed models:
 
 _*Embed English*_
@@ -289,7 +363,7 @@ Supports: Semantic search, retrieval-augmented generation (RAG), classification,
 
 ```ruby
 # WIP
-# client.invoke_model(id: 'cohere.embed-english-v3', input: 'Your prompt goes here ...')
+# client.invoke_model(id: 'cohere.embed-english-v3', prompt: 'Your prompt goes here ...')
 ```
 
 <br>
@@ -300,12 +374,22 @@ _*Embed Multilingual*_
 
 ```ruby
 # WIP
-# client.invoke_model(id: 'cohere.embed-multilingual-v3', input: 'Your prompt goes here ...')
+# client.invoke_model(id: 'cohere.embed-multilingual-v3', prompt: 'Your prompt goes here ...')
 ```
 
 ### Meta
 
 Meta is looking to unlock the power of large language models. Our latest version of Llama is now accessible to individuals, creators, researchers and businesses of all sizes so that they can experiment, innovate and scale their ideas responsibly.
+
+Options for these models are:
+
+```ruby
+  {
+    max_tokens: 128,  # integer
+    temperature: 0.9, # float
+    top_p: 0.7        # float
+  }
+```
 
 How to call Meta models:
 
@@ -316,7 +400,7 @@ _*Llama 2 Chat 13B*_
 Supports: Llama 2 is intended for commercial and research use in English. Fine-tuned chat models are intended for chat based applications.
 
 ```ruby
-client.invoke_model(id: 'meta.llama2-13b-chat-v1', input: 'Generate an Instagram Post about the Metaverse')
+client.invoke_model(id: 'meta.llama2-13b-chat-v1', prompt: 'Generate an Instagram Post about the Metaverse')
 
 # Resopnse
 {:generation=>
@@ -335,7 +419,7 @@ _*Llama 2 Chat 70B*_
 Supports: Llama 2 is intended for commercial and research use in English. Fine-tuned chat models are intended for chat based applications.
 
 ```ruby
-client.invoke_model(id: 'meta.llama2-70b-chat-v1', input: 'Generate a Facebook add to promote a new website that is selling Ruby on Rails and AI courses')
+client.invoke_model(id: 'meta.llama2-70b-chat-v1', prompt: 'Generate a Facebook add to promote a new website that is selling Ruby on Rails and AI courses')
 
 # Response
 {:generation=>
@@ -349,6 +433,16 @@ client.invoke_model(id: 'meta.llama2-70b-chat-v1', input: 'Generate a Facebook a
 
 Stability AI is the world's leading open-source generative artificial intelligence company, collaborating with public and private sector partners to bring next generation infrastructure to a global audience.
 
+Options for these models are:
+
+```ruby
+  {
+    cfg_scale: 20,  # integer
+    seed: 1,        # integer
+    steps: 10       # integer
+  }
+```
+
 How to call Stability AI models:
 
 _*SDXL 0.8*_
@@ -358,7 +452,7 @@ _*SDXL 0.8*_
 Supports: image generation, image editing
 
 ```ruby
-client.invoke_model(id: 'stability.stable-diffusion-xl-v0', input: 'Generate an image of an orca jumping out of the water', options: { file_path: 'path/to/your/image.jpg' })
+client.invoke_model(id: 'stability.stable-diffusion-xl-v0', prompt: 'Generate an image of an orca jumping out of the water', options: { file_path: 'path/to/your/image.jpg' })
 # NOTE: If file_path is not provided the image will be saved at 'image.jpg'
 
 # Success Response
@@ -383,7 +477,7 @@ Example generated image
 _*SDXL 1.0*_
 
 ```ruby
-client.invoke_model(id: 'stability.stable-diffusion-xl-v1', input: 'Generate an image of a white gold ring with a ruby on it', options: { file_path: 'path/to/your/image.jpg' })
+client.invoke_model(id: 'stability.stable-diffusion-xl-v1', prompt: 'Generate an image of a white gold ring with a ruby on it', options: { file_path: 'path/to/your/image.jpg' })
 # NOTE: If file_path is not provided the image will be saved at 'image.jpg'
 
 # Success Response

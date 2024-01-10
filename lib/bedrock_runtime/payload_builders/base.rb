@@ -10,8 +10,8 @@ module RubyAmazonBedrock
       # @param input [String] The input string for what needs to be generated.
       # @param options [Hash] optional parameters to customize payload building.
       # @option options [Any] :key Custom option key-value pairs.
-      def initialize(input, options = {})
-        @input = input
+      def initialize(prompt, options = {})
+        @prompt = prompt
         @options = options
       end
 
@@ -26,6 +26,13 @@ module RubyAmazonBedrock
       # @raise [NotImplementedError] if the subclass does not implement this method.
       # @return [String] the Amazon Bedrock model ID.
       def model_id
+        raise NotImplementedError
+      end
+
+      # Abstract method to set the model parameters to be sent in the request.
+      # @raise [NotImplementedError] if the subclass does not implement this method.
+      # @return [Hash] the Amazon Bedrock model configuration parameters.
+      def parameters
         raise NotImplementedError
       end
 

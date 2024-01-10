@@ -30,17 +30,25 @@ module RubyAmazonBedrock
             accept: '*/*',
             body: {
               text_prompts: [
-                { text: @input }
+                { text: @prompt }
               ],
-              cfg_scale: 10,
-              seed: 0,
-              steps: 50
+              cfg_scale: parameters[:cfg_scale],
+              seed: parameters[:seed],
+              steps: parameters[:steps]
             }.to_json
           }
         end
 
         def model_id
           # noop
+        end
+
+        def parameters
+          {
+            cfg_scale: @options[:cfg_scale] || 10,
+            seed: @options[:seed] || 0,
+            steps: @options[:steps] || 30
+          }
         end
 
         def type

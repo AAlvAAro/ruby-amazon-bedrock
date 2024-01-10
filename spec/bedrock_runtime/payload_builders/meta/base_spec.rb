@@ -4,25 +4,23 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/meta/base'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::Meta::Base do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_prompt' }
+  let(:options) { {} }
   let(:body) do
     {
-      prompt: input,
+      prompt: prompt,
       max_gen_len: 512,
-      temperature: 0.2,
+      temperature: 0.5,
       top_p: 0.9
     }.to_json
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_should_behave_like 'a payload builder'
 
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'meta parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

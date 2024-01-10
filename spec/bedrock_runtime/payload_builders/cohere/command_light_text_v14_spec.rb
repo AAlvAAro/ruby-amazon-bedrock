@@ -4,25 +4,29 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/cohere/command_light_text_v14'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::Cohere::CommandLightTextV14 do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_input' }
+  let(:options) { {} }
   let(:body) do
     {
-      prompt: "#{input}:",
-      max_tokens: 100,
-      temperature: 0.8
+      prompt: "#{prompt}:",
+      temperature: 0.9,
+      p: 0.75,
+      k: 0,
+      max_tokens: 20,
+      num_generations: 1,
+      return_likelihoods: 'GENERATION',
+      stop_sequences: [],
+      stream: false,
+      truncate: 'NONE'
     }.to_json
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_behaves_like 'a payload builder'
 
-      expect(payload[:model_id]).to eq('cohere.command-light-text-v14')
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'cohere command parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

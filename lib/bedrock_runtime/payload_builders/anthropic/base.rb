@@ -33,14 +33,12 @@ module RubyAmazonBedrock
             content_type: 'application/json',
             accept: '*/*',
             body: {
-              prompt: "\n\nHuman: #{@input}\n\nAssistant:",
-              max_tokens_to_sample: 300,
-              temperature: 0.5,
-              top_k: 250,
-              top_p: 1,
-              stop_sequences: [
-                '\n\nHuman'
-              ],
+              prompt: "\n\nHuman: #{@prompt}\n\nAssistant:",
+              max_tokens_to_sample: parameters[:max_tokens_to_sample],
+              temperature: parameters[:temperature],
+              top_k: parameters[:top_k],
+              top_p: parameters[:top_p],
+              stop_sequences: parameters[:stop_sequences],
               anthropic_version: 'bedrock-2023-05-31'
             }.to_json
           }
@@ -48,6 +46,16 @@ module RubyAmazonBedrock
 
         def model_id
           # noop
+        end
+
+        def parameters
+          {
+            max_tokens_to_sample: @options[:max_tokens] || 200,
+            temperature: @options[:temperature] || 0.5,
+            top_k: @options[:top_k] || 250,
+            top_p: @options[:top_p] || 1,
+            stop_sequences: @options[:stop_sequences] || ['\n\nHuman']
+          }
         end
       end
     end

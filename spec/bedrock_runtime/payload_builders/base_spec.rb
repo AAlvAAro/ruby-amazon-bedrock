@@ -11,7 +11,7 @@ RSpec.describe RubyAmazonBedrock::PayloadBuilders::Base do
 
       payload_builder = described_class.new(input, options)
 
-      expect(payload_builder.instance_variable_get(:@input)).to eq(input)
+      expect(payload_builder.instance_variable_get(:@prompt)).to eq(input)
       expect(payload_builder.instance_variable_get(:@options)).to eq(options)
     end
   end

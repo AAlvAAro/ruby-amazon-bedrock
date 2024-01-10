@@ -41,6 +41,10 @@ module RubyAmazonBedrock
           error: e
         }
       end
+
+      def model_id
+        # noop
+      end
     end
   end
 end

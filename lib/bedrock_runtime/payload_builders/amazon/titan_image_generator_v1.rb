@@ -18,7 +18,7 @@ module RubyAmazonBedrock
             body: {
               taskType: "TEXT_IMAGE",
               textToImageParams: {
-                text: @input,
+                text: @prompt,
                 negativeTtext: @options[:negative_text]
               },
               imageGenerationConfig: {

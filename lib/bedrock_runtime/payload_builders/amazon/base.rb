@@ -31,19 +31,23 @@ module RubyAmazonBedrock
             content_type: 'application/json',
             accept: '*/*',
             body: {
-              inputText: @input,
-              textGenerationConfig: {
-                maxTokenCount: 4096,
-                stopSequences: [],
-                temperature: 0,
-                topP: 1
-              }
+              inputText: @prompt,
+              textGenerationConfig: parameters
             }.to_json
           }
         end
 
         def model_id
           # noop
+        end
+
+        def parameters
+          {
+            maxTokenCount: @options[:max_tokens] || 4096,
+            stopSequences: @options[:stop_sequences] || [],
+            temperature: @options[:temperature] || 0,
+            topP: @options[:top_p] || 1
+          }
         end
       end
     end

@@ -29,16 +29,37 @@ module RubyAmazonBedrock
             content_type: 'application/json',
             accept: '*/*',
             body: {
-              prompt: "#{@input}:",
-              max_tokens: 100,
-              temperature: 0.8
-              # return_likelihood: 'GENERATION' NOTE: This was since it was giving an error
+              prompt: "#{@prompt}:",
+              temperature: parameters[:temperature],
+              p: parameters[:p],
+              k: parameters[:k],
+              max_tokens: parameters[:max_tokens],
+              num_generations: parameters[:num_generations],
+              return_likelihoods: parameters[:return_likelihoods],
+              stop_sequences: parameters[:stop_sequences],
+              stream: parameters[:stream],
+              truncate: parameters[:truncate]
             }.to_json
           }
         end
 
         def model_id
           # noop
+        end
+
+        def parameters # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
+          {
+            temperature: @options[:temperature] || 0.9,
+            p: @options[:top_p] || 0.75,
+            k: @options[:top_k] || 0,
+            max_tokens: @options[:max_tokens] || 20,
+            num_generations: @options[:num_generations] || 1,
+            return_likelihoods: @options[:return_likelihoods] || 'GENERATION',
+            stop_sequences: @options[:stop_sequences] || [],
+            stream: @options[:stream] || false,
+            # logit_bias: @options[:logit_bias] || {},
+            truncate: @options[:truncate] || 'NONE'
+          }
         end
       end
     end

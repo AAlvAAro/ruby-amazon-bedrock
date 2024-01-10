@@ -28,16 +28,24 @@ module RubyAmazonBedrock
             content_type: 'application/json',
             accept: '*/*',
             body: {
-              prompt: @input,
-              max_gen_len: 512,
-              temperature: 0.2,
-              top_p: 0.9
+              prompt: @prompt,
+              max_gen_len: parameters[:max_gen_len],
+              temperature: parameters[:temperature],
+              top_p: parameters[:top_p]
             }.to_json
           }
         end
 
         def model_id
           # noop
+        end
+
+        def parameters
+          {
+            max_gen_len: @options[:max_tokens] || 512,
+            temperature: @options[:temperature] || 0.5,
+            top_p: @options[:top_p] || 0.9
+          }
         end
       end
     end

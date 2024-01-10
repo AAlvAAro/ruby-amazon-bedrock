@@ -1,3 +1,8 @@
+## [0.2.2] - 2024-01-10
+
+- Fix bug for Amazon Titan Text Lite
+- Allow payload builders to receive and set Model parameters as options
+
 ## [0.2.1] - 2023-12-25
 
 - Make gem configurable

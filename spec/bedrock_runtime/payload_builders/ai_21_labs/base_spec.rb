@@ -4,14 +4,14 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/ai_21_labs/base'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::Ai21Labs::Base do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_prompt' }
+  let(:options) { {} }
   let(:body) do
     {
-      prompt: input,
-      maxTokens: 200,
+      prompt: prompt,
+      maxTokenCount: 200,
       temperature: 0,
-      topP: 1.0,
+      topP: 1,
       stopSequences: [],
       countPenalty: { scale: 0 },
       presencePenalty: { scale: 0 },
@@ -20,13 +20,11 @@ RSpec.describe RubyAmazonBedrock::PayloadBuilders::Ai21Labs::Base do
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_should_behave_like 'a payload builder'
 
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'a121 labs parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

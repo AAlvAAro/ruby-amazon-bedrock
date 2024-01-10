@@ -33,7 +33,7 @@ RSpec.describe RubyAmazonBedrock::Client do
     models.each do |model|
       it "invokes #{model} model with the given payload" do
         VCR.use_cassette("models/#{model}") do
-          response = client.invoke_model(id: model, input: 'Give me a short list of steps for creating a Ruby gem', options: {})
+          response = client.invoke_model(id: model, prompt: 'Give me a short list of steps for creating a Ruby gem', options: {})
           expect(response).to be_a(Hash)
         end
       end
@@ -42,7 +42,7 @@ RSpec.describe RubyAmazonBedrock::Client do
     context 'when the model is not found' do
       it 'raises an UnkownModelError' do
         VCR.use_cassette('models/not_found') do
-          expect { client.invoke_model(id: 'unknown-model', input: 'Hello World', options: {}) }.to raise_error(RubyAmazonBedrock::UnknownModelError)
+          expect { client.invoke_model(id: 'unknown-model', prompt: 'Hello World', options: {}) }.to raise_error(RubyAmazonBedrock::UnknownModelError)
         end
       end
     end

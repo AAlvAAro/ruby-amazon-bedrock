@@ -26,14 +26,22 @@ module RubyAmazonBedrock
             content_type: 'application/json',
             accept: '*/*',
             body: {
-              texts: [@input],
-              input_type: 'search_document'
+              texts: [@prompt],
+              input_type: parameters[:input_type],
+              truncate: parameters[:truncate]
             }.to_json
           }
         end
 
         def model_id
           # noop
+        end
+
+        def parameters
+          {
+            input_type: @options[:input_type] || 'search_document',
+            truncate: @options[:truncate] || 'NONE'
+          }
         end
       end
     end

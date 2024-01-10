@@ -4,11 +4,11 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/amazon/titan_text_lite_v1'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::Amazon::TitanTextLiteV1 do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_prompt' }
+  let(:options) { {} }
   let(:body) do
     {
-      inputText: input,
+      inputText: prompt,
       textGenerationConfig: {
         maxTokenCount: 4096,
         stopSequences: [],
@@ -19,14 +19,11 @@ RSpec.describe RubyAmazonBedrock::PayloadBuilders::Amazon::TitanTextLiteV1 do
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_should_behave_like 'a payload builder'
 
-      expect(payload[:model_id]).to eq('amazon.titan-text-lite-v1')
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'amazon titan parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

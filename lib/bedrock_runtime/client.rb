@@ -27,16 +27,16 @@ module RubyAmazonBedrock
     # Invokes a model using the Bedrock Runtime client.
     #
     # @param id [String] The ID of the model to be invoked.
-    # @param input [String] The input string for what needs to be generated.
+    # @param prompt [String] The prompt string for what needs to be generated.
     # @param options [Hash] Additional options for the model invocation.
     # @return [Aws::BedrockRuntime::Types::InvokeModelOutput] The output from invoking the model.
     # @example Invoke a model with specific ID and input
     #   client = RubyAmazonBedrock::Client.new
     #   client.invoke_model(
-    # 		id: 'model_id', input: 'This is what you want to generate', options: { option_key: 'option_value' }
+    # 		id: 'model_id', prompt: 'This is what you want to generate', options: { option_key: 'option_value' }
     # 	)
-    def invoke_model(id:, input:, options: {})
-      payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, input, options).create
+    def invoke_model(id:, prompt:, options: {})
+      payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, prompt, options).create
       response = @client.invoke_model(payload_builder_class.build)
 
       response_builder_class = RubyAmazonBedrock::ResponseFactory.new(payload_builder_class.type, response,

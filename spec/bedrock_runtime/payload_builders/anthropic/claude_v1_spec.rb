@@ -4,12 +4,12 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/anthropic/claude_v1'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::Anthropic::ClaudeV1 do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_prompt' }
+  let(:options) { {} }
   let(:body) do
     {
-      prompt: "\n\nHuman: #{input}\n\nAssistant:",
-      max_tokens_to_sample: 300,
+      prompt: "\n\nHuman: #{prompt}\n\nAssistant:",
+      max_tokens_to_sample: 200,
       temperature: 0.5,
       top_k: 250,
       top_p: 1,
@@ -21,14 +21,11 @@ RSpec.describe RubyAmazonBedrock::PayloadBuilders::Anthropic::ClaudeV1 do
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_behaves_like 'a payload builder'
 
-      expect(payload[:model_id]).to eq('anthropic.claude-v1')
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'anthropic parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

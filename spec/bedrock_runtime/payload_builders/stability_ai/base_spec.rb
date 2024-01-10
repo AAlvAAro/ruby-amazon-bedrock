@@ -4,27 +4,25 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/stability_ai/base'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::StabilityAi::Base do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_prompt' }
+  let(:options) { {} }
   let(:body) do
     {
       text_prompts: [
-        { text: input }
+        { text: prompt }
       ],
       cfg_scale: 10,
       seed: 0,
-      steps: 50
+      steps: 30
     }.to_json
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_should_behave_like 'a payload builder'
 
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'stability ai parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

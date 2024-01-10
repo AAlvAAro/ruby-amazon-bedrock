@@ -4,24 +4,22 @@ require 'spec_helper'
 require 'bedrock_runtime/payload_builders/cohere/embed_multilingual_v3'
 
 RSpec.describe RubyAmazonBedrock::PayloadBuilders::Cohere::EmbedMultilingualV3 do
-  let(:input) { 'example_input' }
-  let(:options) { { key: 'value' } }
+  let(:prompt) { 'example_prompt' }
+  let(:options) { {} }
   let(:body) do
     {
-      texts: [input],
-      input_type: 'search_document'
+      texts: [prompt],
+      input_type: 'search_document',
+      truncate: 'NONE'
     }.to_json
   end
 
   describe '#build' do
-    it 'returns a hash with the expected structure' do
-      payload_builder = described_class.new(input, options)
-      payload = payload_builder.build
+    it_behaves_like 'a payload builder'
 
-      expect(payload[:model_id]).to eq('cohere.embed-multilingual-v3')
-      expect(payload[:content_type]).to eq('application/json')
-      expect(payload[:accept]).to eq('*/*')
-      expect(payload[:body]).to eq(body)
+    context 'with custom parameters' do
+      include_context 'cohere embed parameters'
+      it_should_behave_like 'a payload builder'
     end
   end
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-amazon-bedrock (0.2.1)
+    ruby-amazon-bedrock (0.2.2)
       aws-sdk-bedrockruntime (~> 1.0)
 
 GEM
