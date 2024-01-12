@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 RSpec.shared_examples 'a payload builder' do
   it 'validates the payload structure' do
     payload_builder = described_class.new(prompt, options)
@@ -28,7 +26,7 @@ RSpec.shared_context 'a121 labs parameters' do
   let(:body) do
     {
       prompt: prompt,
-      maxTokenCount: 100,
+      maxTokens: 100,
       temperature: 0.5,
       topP: 2,
       stopSequences: %w[stop1 stop2],

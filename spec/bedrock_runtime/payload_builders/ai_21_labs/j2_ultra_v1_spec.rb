@@ -9,7 +9,7 @@ RSpec.describe RubyAmazonBedrock::PayloadBuilders::Ai21Labs::J2UltraV1 do
   let(:body) do
     {
       prompt: prompt,
-      maxTokenCount: 200,
+      maxTokens: 200,
       temperature: 0,
       topP: 1,
       stopSequences: [],

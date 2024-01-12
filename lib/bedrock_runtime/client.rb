@@ -39,8 +39,7 @@ module RubyAmazonBedrock
       payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, prompt, options).create
       response = @client.invoke_model(payload_builder_class.build)
 
-      response_builder_class = RubyAmazonBedrock::ResponseFactory.new(payload_builder_class.type, response,
-                                                                      options).create
+      response_builder_class = RubyAmazonBedrock::ResponseFactory.new(id, response, options).create
       response_builder_class.build
     end
   end

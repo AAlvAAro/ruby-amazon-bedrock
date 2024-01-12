@@ -35,7 +35,7 @@ module RubyAmazonBedrock
             accept: '*/*',
             body: {
               prompt: @prompt,
-              maxTokenCount: parameters[:maxTokenCount],
+              maxTokens: parameters[:maxTokens],
               temperature: parameters[:temperature],
               topP: parameters[:topP],
               stopSequences: parameters[:stopSequences],
@@ -52,7 +52,7 @@ module RubyAmazonBedrock
 
         def parameters # rubocop:disable Metrics/CyclomaticComplexity
           {
-            maxTokenCount: @options[:max_tokens] || 200,
+            maxTokens: @options[:max_tokens] || 200,
             stopSequences: @options[:stop_sequences] || [],
             temperature: @options[:temperature] || 0,
             topP: @options[:top_p] || 1,

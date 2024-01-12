@@ -1,3 +1,8 @@
+## [0.2.3] - 2024-01-12
+
+- Fix A121 Labs bug for maxTokens parameter
+- Allow Image generator to store images in S3 after being created
+
 ## [0.2.2] - 2024-01-10
 
 - Fix bug for Amazon Titan Text Lite

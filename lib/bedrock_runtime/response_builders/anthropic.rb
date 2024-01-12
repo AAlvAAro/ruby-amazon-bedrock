@@ -2,13 +2,14 @@
 
 module RubyAmazonBedrock
   module ResponseBuilders
-    # The Text class is responsible for parsing and building a structured response from a raw text response.
-    # It converts the HTTP response into a structured format to make it easier to access the data.
-    class Text
+    # The Anthropic class is responsible for parsing and building a structured response from a raw text response.
+    # It converts the HTTP response for an Anthropic model into a structured format to make it easier to access
+    # the response data.
+    class Anthropic
       # Initializes a new instance of the Text class.
       #
       # @param response [Object] The raw response object with is an HTTP response.
-      def initialize(response)
+      def initialize(response, _options = {})
         @response = response
       end
 
@@ -19,7 +20,12 @@ module RubyAmazonBedrock
       # @return [Hash] A hash representing the structured data from the response body.
       # The keys of the hash are symbolized for convenient access.
       def build
-        JSON.parse(@response.body.read, symbolize_names: true)
+        response = JSON.parse(@response.body.read, symbolize_names: true)
+
+        {
+          text: response[:completion],
+          full_response: response
+        }
       end
     end
   end

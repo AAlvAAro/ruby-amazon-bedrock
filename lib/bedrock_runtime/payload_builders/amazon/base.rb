@@ -20,7 +20,7 @@ module RubyAmazonBedrock
         #   - :body [String] A JSON string that includes the following details:
         #     - :inputText [String] The input text to be processed by the model.
         #     - :textGenerationConfig [Hash] A hash containing configuration parameters for text generation:
-        #       - :maxTokenCount [Integer] The maximum number of tokens to generate.
+        #       - :maxTokens [Integer] The maximum number of tokens to generate.
         #       - :stopSequences [Array<String>] An array of strings that, when encountered, will signal the end
         # 				of generation.
         #       - :temperature [Float] A parameter controlling the randomness in the response generation.

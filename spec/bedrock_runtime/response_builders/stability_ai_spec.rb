@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'bedrock_runtime/response_builders/image'
+require 'bedrock_runtime/response_builders/stability_ai'
 
-RSpec.describe RubyAmazonBedrock::ResponseBuilders::Image do
+RSpec.describe RubyAmazonBedrock::ResponseBuilders::StabilityAi do
   let(:base64_image) { Base64.encode64(File.binread('spec/fixtures/sample_image.jpg')) }
   let(:response_body) { { artifacts: [{ base64: base64_image }] }.to_json }
   let(:response) { double('response', body: StringIO.new(response_body)) }
