@@ -37,10 +37,27 @@ module RubyAmazonBedrock
     # 	)
     def invoke_model(id:, prompt:, options: {})
       payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, prompt, options).create
-      response = @client.invoke_model(payload_builder_class.build)
+      payload = payload_builder_class.build
+
+      response = @client.invoke_model(payload)
 
       response_builder_class = RubyAmazonBedrock::ResponseFactory.new(id, response, options).create
       response_builder_class.build
+    end
+
+    def invoke_model_with_response_stream(id:, prompt:, options: {})
+      payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, prompt, options).create
+      payload = payload_builder_class.build
+
+      @client.invoke_model_with_response_stream(payload) do |stream|
+        stream.on_error_event do |event|
+          raise event
+        end
+
+        stream.on_event do |event|
+          puts event.bytes
+        end
+      end
     end
   end
 end

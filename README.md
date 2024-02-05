@@ -228,7 +228,7 @@ _*Claude Instant 1.2*_
 
 [https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-instant-v1](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-instant-v1)
 
-Supports: Question answering, information extraction, removing PII, content generation, multiple choice classification, Roleplay, comparing text, summarization, document Q&A with citation
+Supports: Question answering, information extraction, removing PII, content generation, multiple choice classification, Roleplay, comparing text, summarization, document Q&A with citation.
 
 ```ruby
 client.invoke_model('anthropic.claude-instant-v1', 'What is a neural network?')
