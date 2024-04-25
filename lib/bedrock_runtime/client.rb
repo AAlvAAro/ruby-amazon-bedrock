@@ -14,14 +14,21 @@ module RubyAmazonBedrock
     # Initializes the AWS BedrockRuntime client.
     #
     # @note The AWS credentials and region are fetched from the environment variables.
-    def initialize(region: nil, access_key_id: nil, secret_access_key: nil)
+    def initialize(region: nil, access_key_id: nil, secret_access_key: nil, profile: nil)
       config = RubyAmazonBedrock.configuration || RubyAmazonBedrock::Configuration.new
 
-      @client = Aws::BedrockRuntime::Client.new(
-        region: region || config.region,
-        access_key_id: access_key_id || config.access_key_id,
-        secret_access_key: secret_access_key || config.secret_access_key
-      )
+      profile ||= config.profile
+      if profile.present?
+        @client = Aws::BedrockRuntime::Client.new(
+          profile: profile
+        )
+      else
+        @client = Aws::BedrockRuntime::Client.new(
+          region: region || config.region,
+          access_key_id: access_key_id || config.access_key_id,
+          secret_access_key: secret_access_key || config.secret_access_key
+        )
+      end
     end
 
     # Invokes a model using the Bedrock Runtime client.

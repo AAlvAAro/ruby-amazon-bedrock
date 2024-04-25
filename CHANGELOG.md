@@ -1,3 +1,7 @@
+## [0.2.4] - 2024-04-25
+
+- Support the use of AWS Named Profiles for authentication
+
 ## [0.2.3] - 2024-01-12
 
 - Fix A121 Labs bug for maxTokens parameter
