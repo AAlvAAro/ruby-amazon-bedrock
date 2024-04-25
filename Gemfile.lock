@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-amazon-bedrock (0.2.3)
+    ruby-amazon-bedrock (0.2.5)
       aws-sdk-bedrockruntime (~> 1.0)
       aws-sdk-s3 (~> 1.0)
 
@@ -106,4 +106,4 @@ DEPENDENCIES
   webmock (~> 3.12)
 
 BUNDLED WITH
-   2.4.22
+   2.4.14
