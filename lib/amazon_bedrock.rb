@@ -13,7 +13,7 @@ module RubyAmazonBedrock
 
   # Configuration class for setting up AWS credentials and region.
   class Configuration
-    attr_accessor :region, :access_key_id, :secret_access_key
+    attr_accessor :region, :access_key_id, :secret_access_key, :profile
 
     # Initializes a new Configuration instance, loading values from
     # environment variables or setting them to nil by default so the
@@ -22,6 +22,7 @@ module RubyAmazonBedrock
       @region = ENV.fetch('AWS_REGION', nil)
       @access_key_id = ENV.fetch('AWS_ACCESS_KEY_ID', nil)
       @secret_access_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
+      @profile = ENV.fetch('AWS_PROFILE', nil)
     end
   end
 
