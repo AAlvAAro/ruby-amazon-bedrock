@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 require 'base64'
 require 'aws-sdk-bedrockruntime'
 require 'bedrock_runtime/payload_factory'
@@ -17,18 +19,17 @@ module RubyAmazonBedrock
     def initialize(region: nil, access_key_id: nil, secret_access_key: nil, profile: nil)
       config = RubyAmazonBedrock.configuration || RubyAmazonBedrock::Configuration.new
 
-      profile ||= config.profile
-      if profile.present?
-        @client = Aws::BedrockRuntime::Client.new(
-          profile: profile
-        )
-      else
-        @client = Aws::BedrockRuntime::Client.new(
-          region: region || config.region,
-          access_key_id: access_key_id || config.access_key_id,
-          secret_access_key: secret_access_key || config.secret_access_key
-        )
-      end
+      @client = if profile
+                  Aws::BedrockRuntime::Client.new(
+                    profile: profile
+                  )
+                else
+                  Aws::BedrockRuntime::Client.new(
+                    region: region || config.region,
+                    access_key_id: access_key_id || config.access_key_id,
+                    secret_access_key: secret_access_key || config.secret_access_key
+                  )
+                end
     end
 
     # Invokes a model using the Bedrock Runtime client.

@@ -8,7 +8,8 @@ RSpec.describe RubyAmazonBedrock::Client do
     described_class.new(
       region: ENV.fetch('AWS_REGION', nil),
       access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID', nil),
-      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
+      profile: ENV.fetch('AWS_PROFILE', nil)
     )
   end
 

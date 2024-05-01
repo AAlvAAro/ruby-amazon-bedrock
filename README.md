@@ -65,37 +65,12 @@ client = RubyAmazonBedrock::Client.new(
 
 ### AWS Named Profiles
 
-You can also use [AWS Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-format-profile):
+You can also use [AWS Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-format-profile) by passing the `profile` keywoard argument. When using a named profile, specyfing the `region`, `access_key_id` and `access_token` won't be required.
 
 ```ruby
 client = RubyAmazonBedrock::Client.new(
-  profile: 'dev' 
+  profile: "AWS_PROFILE"
 )
-```
-
-This will default to the value of the `$AWS_PROFILE` environment variable and will take precidence over key/token keys.  If for some reason you have `$AWS_PROFILE` defined in your environment _and you do not want to use it_ then you can disable by passing an empty string and specifying your region/key/secret as usual:
-
-```ruby
-client = RubyAmazonBedrock::Client.new(
-  profile: "",            # Disable named profile
-  region: "AWS_REGION",
-  access_key_id: "AWS_ACCESS_KEY_ID",
-  access_token: "AWS_SECRET_ACCESS_KEY"
-)
-```
-
-## With Configuration
-
-```ruby
-RubyAmazonBedrock.configure do |config|
-  # You don't need to specify these lines to default to the environment variables, these lines are provided for illustrative purposes only
-  config.profile = ENV.fetch('AWS_PROFILE', nil)
-  config.region = ENV.fetch('AWS_REGION', nil)
-  config.access_key_id = ENV.fetch('AWS_ACCESS_KEY_ID', nil)
-  config.secret_access_key = ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
-end
-
-client = RubyAmazonBedrock::Client.new
 ```
 
 ## Options
