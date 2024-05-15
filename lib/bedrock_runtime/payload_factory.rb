@@ -14,6 +14,7 @@ require_relative 'payload_builders/cohere/embed_english_v3'
 require_relative 'payload_builders/cohere/embed_multilingual_v3'
 require_relative 'payload_builders/meta/llama213b_chat_v1'
 require_relative 'payload_builders/meta/llama270b_chat_v1'
+require_relative 'payload_builders/meta/llama370b_instruct_v1'
 require_relative 'payload_builders/stability_ai/stable_diffusion_xl_v0'
 require_relative 'payload_builders/stability_ai/stable_diffusion_xl_v1'
 
@@ -64,6 +65,7 @@ module RubyAmazonBedrock
         'cohere.embed-multilingual-v3' => PayloadBuilders::Cohere::EmbedMultilingualV3,
         'meta.llama2-13b-chat-v1' => PayloadBuilders::Meta::Llama213bChatV1,
         'meta.llama2-70b-chat-v1' => PayloadBuilders::Meta::Llama270bChatV1,
+        'meta.llama3-70b-instruct-v1:0' => PayloadBuilders::Meta::Llama370bInstructV1,
         'stability.stable-diffusion-xl-v0' => PayloadBuilders::StabilityAi::StableDiffusionXlV0,
         'stability.stable-diffusion-xl-v1' => PayloadBuilders::StabilityAi::StableDiffusionXlV1
       }
