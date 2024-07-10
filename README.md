@@ -59,7 +59,7 @@ Instantiate a client by passing your AWS IAM credentials:
 client = RubyAmazonBedrock::Client.new(
   region: "AWS_REGION",
   access_key_id: "AWS_ACCESS_KEY_ID",
-  access_token: "AWS_SECRET_ACCESS_KEY"
+  secret_access_key: "AWS_SECRET_ACCESS_KEY"
 )
 ```
 
