@@ -4,7 +4,7 @@
 /coverage/
 /doc/
 /pkg/
-/spec/reports/
+	/spec/reports/
 /tmp/
 .env
 *.gem

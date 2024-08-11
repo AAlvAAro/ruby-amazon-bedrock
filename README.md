@@ -63,6 +63,16 @@ client = RubyAmazonBedrock::Client.new(
 )
 ```
 
+Or copy the `.env.sample` to a `.env` file with your account's credentials and use the `ENV` variable. NOTE: This step is REQUIRED in order to run the tests with `rspec`
+
+```ruby
+client = RubyAmazonBedrock::Client.new(
+  region: ENV["AWS_REGION"],
+  access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+  secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
+)
+```
+
 ### AWS Named Profiles
 
 You can also use [AWS Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-format-profile) by passing the `profile` keywoard argument. When using a named profile, specyfing the `region`, `access_key_id` and `access_token` won't be required.
@@ -229,7 +239,7 @@ _*Claude Instant 1.2*_
 Supports: Question answering, information extraction, removing PII, content generation, multiple choice classification, Roleplay, comparing text, summarization, document Q&A with citation
 
 ```ruby
-client.invoke_model('anthropic.claude-instant-v1', 'What is a neural network?')
+client.invoke_model(id: 'anthropic.claude-instant-v1', prompt: 'What is a neural network?')
 
 # Response
 {:completion=>
