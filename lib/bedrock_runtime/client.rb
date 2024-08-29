@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 require 'base64'
 require 'aws-sdk-bedrockruntime'
 require 'bedrock_runtime/payload_factory'
