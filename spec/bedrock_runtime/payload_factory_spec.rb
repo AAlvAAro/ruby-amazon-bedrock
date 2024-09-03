@@ -19,6 +19,7 @@ RSpec.describe RubyAmazonBedrock::PayloadFactory do
      "cohere.embed-multilingual-v3",
      "meta.llama2-13b-chat-v1",
      "meta.llama2-70b-chat-v1",
+     "meta.llama3-70b-instruct-v1:0",
      "stability.stable-diffusion-xl-v0",
      "stability.stable-diffusion-xl-v1"]
   end
@@ -48,7 +49,7 @@ RSpec.describe RubyAmazonBedrock::PayloadFactory do
 
   describe '#models_to_builders' do
     it 'defines a mapping of model identifiers to builder classes' do
-      expect(models_mapping.keys).to eq(bedrock_models)
+      expect(models_mapping.keys).to contain_exactly(*bedrock_models)
     end
   end
 end
