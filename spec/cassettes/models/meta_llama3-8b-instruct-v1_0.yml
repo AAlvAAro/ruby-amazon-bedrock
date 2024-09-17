@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/meta.llama3-8b-instruct-v1:0/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"Give me a short list of steps for creating a Ruby gem","max_gen_len":512,"temperature":0.5,"top_p":0.9}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Amz-Sdk-Invocation-Id:
+      - f256772e-a630-485d-b52d-e20311339125
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.201.4 ua/2.1 api/bedrock_runtime#1.17.0 os/macos#23 md/arm64
+        lang/ruby#3.0.0 md/3.0.0 m/D
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20240917T163109Z
+      X-Amz-Content-Sha256:
+      - cf1ec2da83f5824b04de33922f5727968ac482454a9af56c2c3119c6711f2b1e
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIASKU7DUX5LSIDI7FA/20240917/us-east-1/bedrock/aws4_request,
+        SignedHeaders=accept;amz-sdk-invocation-id;content-type;host;x-amz-content-sha256;x-amz-date,
+        Signature=036bf9fb08b5c0308655674b5bd9eec2eb8c347f3b2e712585be1def1c780f69
+      Content-Length:
+      - '114'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Sep 2024 16:31:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1170'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 1e88ebb3-f78f-4b57-8926-229f8d4dc625
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '3536'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '275'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '12'
+    body:
+      encoding: UTF-8
+      string: '{"generation":".\n\nComment by Brian Hays on January 28, 2013 at 9:13am\n\nHere
+        are the basic steps for creating a Ruby gem:\n\n1. Create a new directory
+        for your gem and navigate to it in your terminal.\n2. Run `gem init` to create
+        a basic gem structure.\n3. Edit the `gemspec` file to add information about
+        your gem, such as its name, version, and dependencies.\n4. Write your gem''s
+        code in the `lib` directory.\n5. Run `gem build` to build your gem.\n6. Run
+        `gem push` to publish your gem to a gem server (such as RubyGems.org).\n\nThat''s
+        the basic process, but there are many other things you can do to customize
+        and improve your gem, such as adding tests, documentation, and a README file.\n\nComment
+        by Brian Hays on January 28, 2013 at 9:14am\n\nAlso, you may want to consider
+        using a gem template tool like Bundler''s `bundle gem` command or the `gem-skeleton`
+        gem to help you get started with creating a new gem. These tools can save
+        you some time and effort by creating a basic gem structure for you. Just run
+        `bundle gem my_gem` or `gem-skeleton my_gem` and you''ll be off and running!","prompt_token_count":12,"generation_token_count":275,"stop_reason":"stop"}'
+  recorded_at: Tue, 17 Sep 2024 16:31:13 GMT
+recorded_with: VCR 6.2.0

@@ -56,6 +56,7 @@ module RubyAmazonBedrock
         'meta.llama2-13b-chat-v1' => ResponseBuilders::Meta,
         'meta.llama2-70b-chat-v1' => ResponseBuilders::Meta,
         'meta.llama3-70b-instruct-v1:0' => ResponseBuilders::Meta,
+        'meta.llama3-8b-instruct-v1:0' => ResponseBuilders::Meta,
         'stability.stable-diffusion-xl-v0' => ResponseBuilders::StabilityAi,
         'stability.stable-diffusion-xl-v1' => ResponseBuilders::StabilityAi
       }

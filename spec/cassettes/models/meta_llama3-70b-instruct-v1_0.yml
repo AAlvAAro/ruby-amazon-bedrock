@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bedrock-runtime.us-east-1.amazonaws.com/model/meta.llama3-70b-instruct-v1:0/invoke
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"Give me a short list of steps for creating a Ruby gem","max_gen_len":512,"temperature":0.5,"top_p":0.9}'
+    headers:
+      Accept-Encoding:
+      - ''
+      Amz-Sdk-Invocation-Id:
+      - 32851ae6-1618-400a-9411-11d6d3d67636
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      User-Agent:
+      - aws-sdk-ruby3/3.201.4 ua/2.1 api/bedrock_runtime#1.17.0 os/macos#23 md/arm64
+        lang/ruby#3.0.0 md/3.0.0 m/D
+      Host:
+      - bedrock-runtime.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20240917T163051Z
+      X-Amz-Content-Sha256:
+      - cf1ec2da83f5824b04de33922f5727968ac482454a9af56c2c3119c6711f2b1e
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIASKU7DUX5LSIDI7FA/20240917/us-east-1/bedrock/aws4_request,
+        SignedHeaders=accept;amz-sdk-invocation-id;content-type;host;x-amz-content-sha256;x-amz-date,
+        Signature=c2858b5790f78f1428b84dace670018733257a68224824485146d1c0a695f0c6
+      Content-Length:
+      - '114'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Sep 2024 16:31:00 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1244'
+      Connection:
+      - keep-alive
+      X-Amzn-Requestid:
+      - 83c64727-212b-4d5d-a26e-681c991809d3
+      X-Amzn-Bedrock-Invocation-Latency:
+      - '7293'
+      X-Amzn-Bedrock-Output-Token-Count:
+      - '293'
+      X-Amzn-Bedrock-Input-Token-Count:
+      - '12'
+    body:
+      encoding: UTF-8
+      string: '{"generation":".\n\nHere is a short list of steps for creating a Ruby
+        gem:\n\n1. **Create a new gem**: Run `gem new my_gem` (replace \"my_gem\"
+        with your gem''s name) to create a new gem with the basic directory structure.\n2.
+        **Define your gem''s metadata**: Edit the `my_gem.gemspec` file to specify
+        your gem''s name, and other metadata such as version, description, and dependencies.\n3.
+        **Write your gem''s code**: Create a `lib` directory and add your Ruby code
+        to it. This is where you''ll implement the functionality of your gem.\n4.
+        **Test your gem**: Create a `test` directory and add test files to it. Use
+        a testing framework like RSpec or Minitest to write tests for your gem.\n5.
+        **Build and package your gem**: Run `gem build my_gem.gemspec` to build your
+        gem, and then `gem push my_gem-0.1.0.gem` (replace \"0.1.0\" with your gem''s
+        version) to push it to RubyGems.org.\n6. **Publish your gem**: Go to RubyGems.org
+        and create an account if you haven''t already. Then, upload your gem and make
+        it publicly available.\n\nThat''s it! Of course, there are many more details
+        to consider when creating a Ruby gem, but these steps should give you a good
+        starting point.","prompt_token_count":12,"generation_token_count":293,"stop_reason":"stop"}'
+  recorded_at: Tue, 17 Sep 2024 16:31:00 GMT
+recorded_with: VCR 6.2.0
