@@ -1,10 +1,8 @@
-## [0.2.5] - 2024-08-29
+## [0.2.5] - 2024-09-17
 
--  Support for llama370b_instruct_v1
--  Explicitly add base64 gem to dependencies
-
-## [0.2.4] - 2024-04-25
-
+- Support for llama38b_instruct_v1
+- Support for llama370b_instruct_v1
+- Explicitly add base64 gem to dependencies
 - Support the use of AWS Named Profiles for authentication
 
 ## [0.2.3] - 2024-01-12

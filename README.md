@@ -14,7 +14,7 @@ Amazon Bedrock is a fully managed service that makes FMs from leading AI startup
 Add the following line to your application's Gemfile:
 
 ```ruby
-gem "ruby-amazon-bedrock", "~> 0.2.3"
+gem "ruby-amazon-bedrock", "~> 0.2.4"
 ```
 
 And then execute:
