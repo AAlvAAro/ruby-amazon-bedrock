@@ -28,7 +28,7 @@ $ bundle install
 Or install with:
 
 ```bash
-$ gem install ruby-amazon-bedrock -v 0.2.3
+$ gem install ruby-amazon-bedrock -v 0.2.4
 ```
 
 and require with:

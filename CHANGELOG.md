@@ -1,4 +1,4 @@
-## [0.2.5] - 2024-09-17
+## [0.2.4] - 2024-09-17
 
 - Support for llama38b_instruct_v1
 - Support for llama370b_instruct_v1
