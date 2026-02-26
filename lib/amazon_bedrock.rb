@@ -3,6 +3,12 @@
 require_relative "amazon_bedrock/version"
 require_relative "bedrock_runtime/client"
 
+Warning.warn(
+  "[DEPRECATION] ruby-amazon-bedrock is deprecated and no longer maintained. " \
+  "Please switch to RubyLLM (https://github.com/crmne/ruby_llm) which provides " \
+  "a more complete and actively maintained solution for working with LLMs in Ruby.\n"
+)
+
 # The RubyAmazonBedrock module serves as a namespace for classes that
 # interact with Amazon Bedrock Service. It includes configuration management
 # and custom error classes for handling AWS service interactions.
