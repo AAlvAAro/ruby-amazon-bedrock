@@ -1,3 +1,9 @@
+## [0.3.0] - 2026-02-26
+
+- **DEPRECATED**: This gem is no longer maintained. Please use [RubyLLM](https://github.com/crmne/ruby_llm) instead.
+- Added deprecation warning on require
+- Added post-install deprecation message
+
 ## [0.2.4] - 2024-09-17
 
 - Support for llama38b_instruct_v1

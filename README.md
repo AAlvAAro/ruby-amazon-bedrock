@@ -1,5 +1,7 @@
 # Ruby Amazon Bedrock
 
+> **DEPRECATED:** This gem is no longer maintained. I recommend using [RubyLLM](https://github.com/crmne/ruby_llm) instead — it's a more complete and actively maintained library for working with LLMs in Ruby, supporting multiple providers including Amazon Bedrock.
+
 [![Gem Version](https://badge.fury.io/rb/ruby-amazon-bedrock.svg)](https://badge.fury.io/rb/ruby-amazon-bedrock)
 [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main.svg?style=shield&circle-token=31edf35e4c3f323ce0044c6fceadf9ffb15f5d3c)](https://dl.circleci.com/status-badge/redirect/circleci/JP4R1PDyZ2Yax5GxVQoMZN/LAwrE89wMVTrgpfzaimon/tree/main)
 
@@ -14,7 +16,7 @@ Amazon Bedrock is a fully managed service that makes FMs from leading AI startup
 Add the following line to your application's Gemfile:
 
 ```ruby
-gem "ruby-amazon-bedrock", "~> 0.2.4"
+gem "ruby-amazon-bedrock", "~> 0.3.0"
 ```
 
 And then execute:
@@ -28,7 +30,7 @@ $ bundle install
 Or install with:
 
 ```bash
-$ gem install ruby-amazon-bedrock -v 0.2.4
+$ gem install ruby-amazon-bedrock -v 0.3.0
 ```
 
 and require with:
