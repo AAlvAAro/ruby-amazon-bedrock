@@ -48,5 +48,21 @@ module RubyAmazonBedrock
       response_builder_class = RubyAmazonBedrock::ResponseFactory.new(id, response, options).create
       response_builder_class.build
     end
+
+    # Invokes a model using the Bedrock Runtime client with a response stream.
+    #
+    # @param id [String] The ID of the model to be invoked.
+    # @param prompt [String] The prompt string for what needs to be generated.
+    # @param options [Hash] Additional options for the model invocation.
+    # @yield [Aws::BedrockRuntime::Types::ResponseStream] Yields each chunk of the response stream.
+    # @return [Enumerator] Returns an enumerator if no block is given.
+    def invoke_model_with_response_stream(id:, prompt:, options: {}, &block)
+      payload_builder_class = RubyAmazonBedrock::PayloadFactory.new(id, prompt, options).create
+      response = @client.invoke_model_with_response_stream(payload_builder_class.build)
+
+      return response.body.each unless block_given?
+
+      response.body.each { |chunk| yield chunk }
+    end
   end
 end
